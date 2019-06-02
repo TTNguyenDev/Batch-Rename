@@ -1,0 +1,15 @@
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\bin\Release\MiniProject-Batch-Rename.exe.config
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\bin\Release\MiniProject-Batch-Rename.exe
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\bin\Release\MiniProject-Batch-Rename.pdb
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\MainWindow.g.cs
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\App.g.cs
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\MiniProject-Batch-Rename_MarkupCompile.cache
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\MiniProject-Batch-Rename_MarkupCompile.lref
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\MainWindow.baml
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\MiniProject-Batch-Rename.g.resources
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\MiniProject_Batch_Rename.Properties.Resources.resources
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\MiniProject-Batch-Rename.csproj.GenerateResource.cache
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\MiniProject-Batch-Rename.csproj.CoreCompileInputs.cache
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\MiniProject-Batch-Rename.exe
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\MiniProject-Batch-Rename.pdb
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\MiniProject-Batch-Rename.csprojAssemblyReference.cache
