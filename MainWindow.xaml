@@ -17,8 +17,8 @@
                 <!--Button Refresh-->
                 <Button>
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Images/Hopstarter-Soft-Scraps-Button-Refresh.ico" Width="15" />
-                        <TextBlock Text="Refresh" />
+                        <Image Source="/Images/Hopstarter-Soft-Scraps-Button-Refresh.ico" Width="15" RenderOptions.BitmapScalingMode="HighQuality" />
+                        <TextBlock Text="Refresh" Margin="5"/>
                     </StackPanel>
                 </Button>
 
@@ -27,8 +27,8 @@
 
                     <ComboBoxItem IsSelected="True">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/Oxygen-Icons.org-Oxygen-Categories-system-help.ico" Width="15" />
-                            <TextBlock Text="Help"/>
+                            <Image Source="/Images/Oxygen-Icons.org-Oxygen-Categories-system-help.ico" Width="15" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            <TextBlock Text="Help" Margin="5"/>
                         </StackPanel>
                     </ComboBoxItem>
                     <ComboBoxItem Content="" />
@@ -37,8 +37,8 @@
                 <!-- Buton Start Batching-->
                 <Button>
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Images/Custom-Icon-Design-Flatastic-9-Start.ico" Width="15" />
-                        <TextBlock Text="START BATCH" />
+                        <Image Source="/Images/Custom-Icon-Design-Flatastic-9-Start.ico" Width="15" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="START BATCH" Margin="5"/>
                     </StackPanel>
                 </Button>
             </ToolBar>
@@ -48,8 +48,8 @@
                 <ComboBox >
                     <ComboBoxItem IsSelected="True">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/Oxygen-Icons.org-Oxygen-Actions-list-add-user.ico" Width="15" />
-                            <TextBlock Text="Add Method"/>
+                            <Image Source="/Images/Oxygen-Icons.org-Oxygen-Actions-list-add-user.ico" Width="15" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            <TextBlock Text="Add Method" Margin="5"/>
                         </StackPanel>
                     </ComboBoxItem>
                     <ComboBoxItem Content="" />
@@ -58,7 +58,7 @@
                 <!--Button Clear-->
                 <Button>
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Images/Seanau-Email-Clear.ico" Width="15" />
+                        <Image Source="/Images/Seanau-Email-Clear.ico" Width="15" RenderOptions.BitmapScalingMode="HighQuality"/>
                         <TextBlock Text="Clear" />
                     </StackPanel>
                 </Button>
@@ -67,16 +67,16 @@
 
                 <!-- Buton UP DOWN LEFT RIGHT-->
                 <Button>
-                    <Image Source="/Images/Hopstarter-Soft-Scraps-Button-Download.ico" Width="15" />
+                    <Image Source="/Images/Hopstarter-Soft-Scraps-Button-Download.ico" Width="15" RenderOptions.BitmapScalingMode="HighQuality"/>
                 </Button>
                 <Button>
-                    <Image Source="/Images/Hopstarter-Soft-Scraps-Button-Next.ico" Width="15" />
+                    <Image Source="/Images/Hopstarter-Soft-Scraps-Button-Next.ico" Width="15" RenderOptions.BitmapScalingMode="HighQuality"/>
                 </Button>
                 <Button>
-                    <Image Source="/Images/Hopstarter-Soft-Scraps-Button-Previous.ico" Width="15" />
+                    <Image Source="/Images/Hopstarter-Soft-Scraps-Button-Previous.ico" Width="15" RenderOptions.BitmapScalingMode="HighQuality"/>
                 </Button>
                 <Button>
-                    <Image Source="/Images/Hopstarter-Soft-Scraps-Button-Upload.ico" Width="15" />
+                    <Image Source="/Images/Hopstarter-Soft-Scraps-Button-Upload.ico" Width="15" RenderOptions.BitmapScalingMode="HighQuality"/>
                 </Button>
             </ToolBar>
 
@@ -84,7 +84,7 @@
 
                 <!--Button Refresh-->
                 <Button>
-                    <Image Source="/Images/Custom-Icon-Design-Pretty-Office-7-Save.ico" Width="15" />
+                    <Image Source="/Images/Custom-Icon-Design-Pretty-Office-7-Save.ico" Width="15" RenderOptions.BitmapScalingMode="HighQuality"/>
                 </Button>
                 <StackPanel Orientation="Horizontal" >
 
@@ -100,50 +100,50 @@
 
             <ListView DockPanel.Dock="Left">
                 <ListViewItem Background="LightCoral" Foreground="Red" FontFamily="Verdana" FontSize="12" FontWeight="Bold">
-                    <CheckBox Name="newCaseCheckBox" >
+                    <CheckBox Name="newCaseCheckBox">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/Button-Add-icon.png" Height="15"></Image>
-                            <TextBlock Text="New Case" />
+                            <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            <TextBlock Text="New Case" Margin="5"/>
                         </StackPanel>
                     </CheckBox>
                 </ListViewItem>
                 <ListViewItem Background="LightGray" Foreground="Black" FontFamily="Georgia" FontSize="14" FontWeight="Bold">
                     <CheckBox Name="moveCheckBox">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/Button-Add-icon.png" Height="15"></Image>
-                            <TextBlock Text="Move" />
+                            <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            <TextBlock Text="Move" Margin="5"/>
                         </StackPanel>
                     </CheckBox>
                 </ListViewItem>
                 <ListViewItem Background="LightBlue" Foreground="Purple" FontFamily="Verdana" FontSize="12" FontWeight="Bold">
                     <CheckBox Name="removePatternCheckBox">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/Button-Add-icon.png" Height="15"></Image>
-                            <TextBlock Text="Remove Pattern" />
+                            <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            <TextBlock Text="Remove Pattern" Margin="5"/>
                         </StackPanel>
                     </CheckBox>
                 </ListViewItem>
                 <ListViewItem Background="LightGreen" Foreground="Green" FontFamily="Georgia" FontSize="14" FontWeight="Bold">
                     <CheckBox Name="replaceCheckBox">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/Button-Add-icon.png" Height="15"></Image>
-                            <TextBlock Text="RePlace" />
+                            <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            <TextBlock Text="RePlace" Margin="5"/>
                         </StackPanel>
                     </CheckBox>
                 </ListViewItem>
                 <ListViewItem Background="LightBlue" Foreground="Blue" FontFamily="Verdana" FontSize="12" FontWeight="Bold">
                     <CheckBox Name="trimCheckBox">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/Button-Add-icon.png" Height="15"></Image>
-                            <TextBlock Text="Trim" />
+                            <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            <TextBlock Text="Trim" Margin="5"/>
                         </StackPanel>
                     </CheckBox>
                 </ListViewItem>
                 <ListViewItem Background="LightSlateGray" Foreground="Orange" FontFamily="Georgia" FontSize="14" FontWeight="Bold">
                     <CheckBox Name="newNameCheckBox">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/Button-Add-icon.png" Height="15"></Image>
-                            <TextBlock Text="NewName"></TextBlock>
+                            <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            <TextBlock Text="NewName" Margin="5"/>
                         </StackPanel>
                     </CheckBox>
                 </ListViewItem>
@@ -151,7 +151,7 @@
                     <StackPanel>
                         <TextBox Width="150"  />
                         <StackPanel Orientation="Horizontal" Margin="5">
-                            <TextBlock Text="Apply to:" Margin="4" />
+                            <TextBlock Text="Apply to:" Margin="5" />
                             <ComboBox>
                                 <ComboBoxItem IsSelected="True" Content="Name"/>
                             </ComboBox>
@@ -164,15 +164,15 @@
                     <TabItem>
                         <TabItem.Header>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Rename Files" />
+                                <TextBlock Text="Rename Files" Margin="5"/>
                             </StackPanel>
                         </TabItem.Header>
                         <StackPanel>
                             <ToolBar>
                                 <Button>
                                     <StackPanel Orientation="Horizontal">
-                                        <Image Source="/Images/Button-Add-icon.png" Width="15" />
-                                        <TextBlock Text="Add"/>
+                                        <Image Source="/Images/Button-Add-icon.png" Width="15" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                        <TextBlock Text="Add" Margin="5"/>
                                     </StackPanel>
                                 </Button>
                                 
@@ -193,7 +193,7 @@
                     <TabItem>
                         <TabItem.Header>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Rename Forders" />
+                                <TextBlock Text="Rename Forders" Margin="5"/>
                             </StackPanel>
                         </TabItem.Header>
                         <StackPanel>
@@ -201,11 +201,11 @@
                             <ToolBar>
                                 <Button>
                                     <StackPanel Orientation="Horizontal">
-                                        <Image Source="/Images/Button-Add-icon.png" Width="15" />
-                                        <TextBlock Text="Add"/>
+                                        <Image Source="/Images/Button-Add-icon.png" Width="15" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                        <TextBlock Text="Add" Margin="5"/>
                                     </StackPanel>
                                 </Button>
-                                <Button Content="New" />
+                                <Button Content="New" Margin="5"/>
                             </ToolBar>
 
                             <ListView  Name="folderListView" Height="315" >
