@@ -169,7 +169,7 @@
                         </TabItem.Header>
                         <StackPanel>
                             <ToolBar>
-                                <Button>
+                                <Button Click="addSysFileDialog">
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="/Images/Button-Add-icon.png" Width="15" RenderOptions.BitmapScalingMode="HighQuality"/>
                                         <TextBlock Text="Add" Margin="5"/>
@@ -177,11 +177,11 @@
                                 </Button>
                                 
                             </ToolBar>
-                            <ListView  Name="fileListView" Height="315" >
+                            <ListView  Name="fileListView" Height="315" SelectionChanged="FileListView_SelectionChanged" >
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="File Name" Width= "100"/>
-                                        <GridViewColumn Header="New FileName" Width="100" />
+                                        <GridViewColumn Header="File Name"  Width= "100"  DisplayMemberBinding="{Binding Name}"/>
+                                        <GridViewColumn Header="New FileName" Width="100" DisplayMemberBinding="{Binding Path}"/>
                                         <GridViewColumn Header="Path" Width="100" />
                                         <GridViewColumn Header="Eror" Width="100" />
                                     </GridView>

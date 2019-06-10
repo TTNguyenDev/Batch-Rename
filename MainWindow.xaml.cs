@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,9 +27,22 @@ namespace MiniProject_Batch_Rename
             InitializeComponent();
         }
 
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        BindingList<File> files = new BindingList<File>();
+        BindingList<Folder>
+        private void addSysFileDialog(object sender, RoutedEventArgs e)
         {
+            System.Windows.Forms.FolderBrowserDialog data = new System.Windows.Forms.FolderBrowserDialog();
+            data.ShowDialog();
 
+            string[] filesSub = Directory.GetFiles(data.SelectedPath);
+            string[] folders = Directory.GetDirectories(data.SelectedPath);
+
+            foreach(var file in filesSub)
+            {
+                files.Add(new File { Name = file, Path = file });
+            }
+
+            fileListView.ItemsSource = files;
         }
     }
 }
