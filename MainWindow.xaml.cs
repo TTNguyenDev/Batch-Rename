@@ -28,7 +28,7 @@ namespace MiniProject_Batch_Rename
         }
 
         BindingList<File> files = new BindingList<File>();
-        BindingList<Folder>
+        BindingList<Folder> folders = new BindingList<Folder>();
         private void addSysFileDialog(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.FolderBrowserDialog data = new System.Windows.Forms.FolderBrowserDialog();
@@ -43,6 +43,21 @@ namespace MiniProject_Batch_Rename
             }
 
             fileListView.ItemsSource = files;
+        }
+
+        private void addSysFolderDialog(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog data = new System.Windows.Forms.FolderBrowserDialog();
+            data.ShowDialog();
+
+            string[] foldersSub = Directory.GetDirectories(data.SelectedPath);
+
+            foreach (var folder in foldersSub)
+            {
+                folders.Add(new Folder { Name = folder, Path = folder });
+            }
+
+            folderListView.ItemsSource = folders;
         }
     }
 }

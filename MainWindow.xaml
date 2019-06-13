@@ -177,7 +177,7 @@
                                 </Button>
                                 
                             </ToolBar>
-                            <ListView  Name="fileListView" Height="315" SelectionChanged="FileListView_SelectionChanged" >
+                            <ListView  Name="fileListView" Height="315">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="File Name"  Width= "100"  DisplayMemberBinding="{Binding Name}"/>
@@ -199,7 +199,7 @@
                         <StackPanel>
 
                             <ToolBar>
-                                <Button>
+                                <Button Click="addSysFolderDialog">
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="/Images/Button-Add-icon.png" Width="15" RenderOptions.BitmapScalingMode="HighQuality"/>
                                         <TextBlock Text="Add" Margin="5"/>
