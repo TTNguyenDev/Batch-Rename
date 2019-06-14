@@ -29,17 +29,23 @@ namespace MiniProject_Batch_Rename
 
         BindingList<File> files = new BindingList<File>();
         BindingList<Folder> folders = new BindingList<Folder>();
+
+        private string getNameBySplitPath(string path)
+        {
+            string[] result = path.Split('\\');
+            return result.Last();
+        }
+
         private void addSysFileDialog(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.FolderBrowserDialog data = new System.Windows.Forms.FolderBrowserDialog();
             data.ShowDialog();
 
             string[] filesSub = Directory.GetFiles(data.SelectedPath);
-            string[] folders = Directory.GetDirectories(data.SelectedPath);
 
             foreach(var file in filesSub)
             {
-                files.Add(new File { Name = file, Path = file });
+                files.Add(new File { Name = getNameBySplitPath(file), Path = file });
             }
 
             fileListView.ItemsSource = files;
@@ -54,7 +60,7 @@ namespace MiniProject_Batch_Rename
 
             foreach (var folder in foldersSub)
             {
-                folders.Add(new Folder { Name = folder, Path = folder });
+                folders.Add(new Folder { Name = getNameBySplitPath(folder), Path = folder });
             }
 
             folderListView.ItemsSource = folders;

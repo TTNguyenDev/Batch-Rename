@@ -211,10 +211,10 @@
                             <ListView  Name="folderListView" Height="315" >
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="Folder Name" Width= "100"/>
-                                        <GridViewColumn Header="New folderName" Width="100" />
-                                        <GridViewColumn Header="Path" Width="100" />
-                                        <GridViewColumn Header="Eror" Width="100" />
+                                        <GridViewColumn Header="Folder Name" Width= "100"  DisplayMemberBinding="{Binding Name}"/>
+                                        <GridViewColumn Header="New folderName" Width="100"  DisplayMemberBinding="{Binding Name}"/>
+                                            <GridViewColumn Header="Path" Width="100"  DisplayMemberBinding="{Binding Name}"/>
+                                        <GridViewColumn Header="Eror" Width="100"  DisplayMemberBinding="{Binding Name}"/>
                                     </GridView>
                                 </ListView.View>
                             </ListView>
