@@ -45,3 +45,5 @@ D:\17CLC3\HK6\WINDOWS\Batch-Rename.git\obj\Debug\MiniProject-Batch-Rename.g.reso
 D:\17CLC3\HK6\WINDOWS\Batch-Rename.git\obj\Debug\MiniProject_Batch_Rename.Properties.Resources.resources
 D:\17CLC3\HK6\WINDOWS\Batch-Rename.git\obj\Debug\MiniProject-Batch-Rename.csproj.GenerateResource.cache
 D:\17CLC3\HK6\WINDOWS\Batch-Rename.git\obj\Debug\MiniProject-Batch-Rename.csproj.CoreCompileInputs.cache
+\\Mac\Home\Desktop\Batch-Rename(C#)\obj\Debug\UpdateReplaceArgsDialog.g.cs
+\\Mac\Home\Desktop\Batch-Rename(C#)\obj\Debug\UpdateReplaceArgsDialog.baml
