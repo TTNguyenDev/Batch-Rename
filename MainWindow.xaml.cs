@@ -27,8 +27,8 @@ namespace MiniProject_Batch_Rename
             InitializeComponent();
         }
 
-        BindingList<File> files = new BindingList<File>();
-        BindingList<Folder> folders = new BindingList<Folder>();
+        BindingList<Files> files = new BindingList<Files>();
+        BindingList<Folders> folders = new BindingList<Folders>();
 
         private string getNameBySplitPath(string path)
         {
@@ -36,6 +36,18 @@ namespace MiniProject_Batch_Rename
             return result.Last();
         }
 
+        private string getMainPath(string path)
+        {
+            string[] result = path.Split('\\');
+            foreach (var r in result)
+            {
+
+            }
+            return result.Last();
+        }
+
+
+        //files
         private void addSysFileDialog(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.FolderBrowserDialog data = new System.Windows.Forms.FolderBrowserDialog();
@@ -43,14 +55,23 @@ namespace MiniProject_Batch_Rename
 
             string[] filesSub = Directory.GetFiles(data.SelectedPath);
 
-            foreach(var file in filesSub)
+
+            foreach (var file in filesSub)
             {
-                files.Add(new File { Name = getNameBySplitPath(file), Path = file });
+                files.Add(new Files { Name = getNameBySplitPath(file), Path = file });
             }
 
             fileListView.ItemsSource = files;
+            RenameFiles();
         }
-
+        private void RenameFiles()
+        {
+            var oldName = files[0].Path;
+            var newName = "D:\\test.txt";
+            File.Move(oldName, newName);
+            MessageBox.Show("File named changed!");
+        }
+        //folder
         private void addSysFolderDialog(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.FolderBrowserDialog data = new System.Windows.Forms.FolderBrowserDialog();
@@ -60,10 +81,19 @@ namespace MiniProject_Batch_Rename
 
             foreach (var folder in foldersSub)
             {
-                folders.Add(new Folder { Name = getNameBySplitPath(folder), Path = folder });
+                folders.Add(new Folders { Name = getNameBySplitPath(folder), Path = folder });
             }
 
             folderListView.ItemsSource = folders;
+            RenameFolders();
+        }
+        private void RenameFolders()
+        {
+
+            var oldName = folders[0].Path;
+            var newName = "D:\\trash\\trash3";
+            Directory.Move(oldName, newName);
+            MessageBox.Show("File named changed!");
         }
     }
 }

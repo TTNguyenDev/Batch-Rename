@@ -61,6 +61,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Replace.cs" />
+    <Compile Include="ReplaceArgs.cs" />
+    <Compile Include="Replacer.cs" />
+    <Compile Include="UpdateReplaceArgsDialog.xaml.cs">
+      <DependentUpon>UpdateReplaceArgsDialog.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -69,12 +75,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="File.cs" />
-    <Compile Include="Folder.cs" />
+    <Compile Include="Files.cs" />
+    <Compile Include="Folders.cs" />
+    <Compile Include="IAction.cs" />
+    <Compile Include="IArgs.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UpdateReplaceArgsDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
