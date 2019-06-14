@@ -36,17 +36,6 @@ namespace MiniProject_Batch_Rename
             return result.Last();
         }
 
-        private string getMainPath(string path)
-        {
-            string[] result = path.Split('\\');
-            foreach (var r in result)
-            {
-
-            }
-            return result.Last();
-        }
-
-
         //files
         private void addSysFileDialog(object sender, RoutedEventArgs e)
         {
@@ -55,22 +44,33 @@ namespace MiniProject_Batch_Rename
 
             string[] filesSub = Directory.GetFiles(data.SelectedPath);
 
-
             foreach (var file in filesSub)
             {
                 files.Add(new Files { Name = getNameBySplitPath(file), Path = file });
             }
 
             fileListView.ItemsSource = files;
+            MessageBox.Show("Chon OK de doi ten");
             RenameFiles();
+            
+            //fileListView.Items.Clear();
+            files.Clear();
+
+            filesSub = Directory.GetFiles(data.SelectedPath);
+
+            foreach (var file in filesSub)
+            {
+                files.Add(new Files { Name = getNameBySplitPath(file), Path = file });
+            }
+
+
         }
         private void RenameFiles()
         {
-            var oldName = files[0].Path;
-            var newName = "D:\\test.txt";
-            File.Move(oldName, newName);
-            MessageBox.Show("File named changed!");
+            Files a = new Files();
+            a.replace("xuan", "ha", files[0].Path);
         }
+
         //folder
         private void addSysFolderDialog(object sender, RoutedEventArgs e)
         {
@@ -89,11 +89,8 @@ namespace MiniProject_Batch_Rename
         }
         private void RenameFolders()
         {
-
-            var oldName = folders[0].Path;
-            var newName = "D:\\trash\\trash3";
-            Directory.Move(oldName, newName);
-            MessageBox.Show("File named changed!");
+            Folders a = new Folders();
+            a.replace("a", "b", folders[0].Path);
         }
     }
 }
