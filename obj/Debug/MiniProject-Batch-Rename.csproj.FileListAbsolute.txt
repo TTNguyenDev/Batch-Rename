@@ -28,7 +28,6 @@ C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\ob
 \\Mac\Home\Desktop\Batch-Rename(C#)\obj\Debug\MiniProject-Batch-Rename.csproj.CoreCompileInputs.cache
 \\Mac\Home\Desktop\Batch-Rename(C#)\obj\Debug\MiniProject-Batch-Rename.exe
 \\Mac\Home\Desktop\Batch-Rename(C#)\obj\Debug\MiniProject-Batch-Rename.pdb
-D:\17CLC3\HK6\WINDOWS\Batch-Rename.git\obj\Debug\MiniProject-Batch-Rename.csprojAssemblyReference.cache
 D:\17CLC3\HK6\WINDOWS\Batch-Rename.git\obj\Debug\MainWindow.g.cs
 D:\17CLC3\HK6\WINDOWS\Batch-Rename.git\obj\Debug\App.g.cs
 D:\17CLC3\HK6\WINDOWS\Batch-Rename.git\obj\Debug\MiniProject-Batch-Rename_MarkupCompile.cache
@@ -47,3 +46,4 @@ D:\17CLC3\HK6\WINDOWS\Batch-Rename.git\obj\Debug\MiniProject-Batch-Rename.csproj
 D:\17CLC3\HK6\WINDOWS\Batch-Rename.git\obj\Debug\MiniProject-Batch-Rename.csproj.CoreCompileInputs.cache
 \\Mac\Home\Desktop\Batch-Rename(C#)\obj\Debug\UpdateReplaceArgsDialog.g.cs
 \\Mac\Home\Desktop\Batch-Rename(C#)\obj\Debug\UpdateReplaceArgsDialog.baml
+D:\17CLC3\HK6\WINDOWS\Batch-Rename.git\obj\Debug\MiniProject-Batch-Rename.csprojAssemblyReference.cache

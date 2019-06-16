@@ -61,7 +61,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Replace.cs" />
+    <Compile Include="FullNameNormalize.cs" />
+    <Compile Include="FullNameNormalizeArgs.cs" />
     <Compile Include="ReplaceArgs.cs" />
     <Compile Include="Replacer.cs" />
     <Compile Include="UpdateReplaceArgsDialog.xaml.cs">

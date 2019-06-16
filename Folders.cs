@@ -25,6 +25,34 @@ namespace MiniProject_Batch_Rename
             Directory.Move(path, replaceAction.Process(path));
         }
 
+        //fullname normalize
+        public string _FullNameNormalize(string name)
+        {
+            var Result = "";
+            name = name.Trim();
+
+            while (name.IndexOf("  ") != -1)
+            {
+                name = name.Replace("  ", " ");
+            }
+            var SubName = name.Split(' ');
+            for (int i = 0; i < SubName.Length; i++)
+            {
+                var FirstChar = SubName[i].Substring(0, 1);
+                var OtherChar = SubName[i].Substring(1);
+                SubName[i] = FirstChar.ToUpper() + OtherChar.ToLower();
+                Result += SubName[i] + " ";
+            }
+            return Result;
+        }
+        public void fullnamenormalize(string originName, string path)
+        {
+            string newname = _FullNameNormalize(originName);
+            IAction fullnamenormalizeAction = new FullNameNormalize()
+            { Args = new FullNameNormalizeArgs() { OldName = originName, NewName = newname } };
+            Console.Write(newname);
+            Directory.Move(path, fullnamenormalizeAction.Process(path));
+        }
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }
