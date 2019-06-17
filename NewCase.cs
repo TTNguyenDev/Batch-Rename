@@ -13,7 +13,7 @@ namespace MiniProject_Batch_Rename
         /// <summary>
         /// type: các option
         /// </summary>
-
+        public int _type { get; set; }
         public string Description => throw new NotImplementedException();
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -30,17 +30,16 @@ namespace MiniProject_Batch_Rename
         public string Process(string origin)
         {
             var arg = Args as NewCaseArg;
-
+            var _needer = arg.needer;
             var result = "";
-            if (arg.Type == 1)
+            if (_type == 1)
                 result = origin.ToUpper();
-            else if (arg.Type == 2)
+            else if (_type == 2)
                 result = origin.ToLower();
-            else if (arg.Type == 3)
+            else if(_type == 3)
             {
 
                 origin = origin.Trim();
-                origin.ToLower();
                 string[] SubName = origin.Split(' ');
                 for (int i = 0; i < SubName.Length; i++)
                 {
@@ -49,6 +48,8 @@ namespace MiniProject_Batch_Rename
                     SubName[i] = FirstChar.ToUpper() + OtherChar.ToLower();
                     result += SubName[i] + " ";
                 }
+             
+                
             }
             return result;
         }
