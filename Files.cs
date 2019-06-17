@@ -27,7 +27,7 @@ namespace MiniProject_Batch_Rename
 
         public void newCase( string path)
         {
-            IAction newcase = new NewCase() { Args = new NewCaseArg() { needer = path } , _type = 3 };
+            IAction newcase = new NewCase() { Args = new NewCaseArg() { Type = 3 } };
             File.Move(path, newcase.Process(path));
         }
         
