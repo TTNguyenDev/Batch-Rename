@@ -22,13 +22,14 @@ namespace MiniProject_Batch_Rename
         public void replace(string originName, string newName, string path) 
         {
             IAction replaceAction = new Replacer() { Args = new ReplaceArgs() { OldFile = originName, NewFile = newName } };
+
             File.Move(path, replaceAction.Process(path));
         }
 
-        public void newCase( string path)
+        public void newCase(string origin, string path)
         {
-            IAction newcase = new NewCase() { Args = new NewCaseArg() { needer = path } , _type = 3 };
-            File.Move(path, newcase.Process(path));
+            IAction newcase = new NewCase() { Args = new NewCaseArg() { type = 3 } };
+            File.Move(path,path.Replace(origin,newcase.Process(origin)));
         }
         
         public event PropertyChangedEventHandler PropertyChanged;
