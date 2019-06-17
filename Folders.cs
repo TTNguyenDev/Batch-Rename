@@ -47,11 +47,13 @@ namespace MiniProject_Batch_Rename
         }
         public void fullnamenormalize(string originName, string path)
         {
+            int b = 0;
             string newname = _FullNameNormalize(originName);
             IAction fullnamenormalizeAction = new FullNameNormalize()
             { Args = new FullNameNormalizeArgs() { OldName = originName, NewName = newname } };
-            Console.Write(newname);
-            Directory.Move(path, fullnamenormalizeAction.Process(path));
+            string a = "aa";
+            Directory.Move(path, a);
+            Directory.Move(a, fullnamenormalizeAction.Process(path));
         }
         public event PropertyChangedEventHandler PropertyChanged;
     }

@@ -62,7 +62,7 @@ namespace MiniProject_Batch_Rename
             {
                 files.Add(new Files { Name = getNameBySplitPath(file), Path = file });
             }
-            /*FullNameNormalizeFile();
+            FullNameNormalizeFile();
 
             //fileListView.Items.Clear();
             files.Clear();
@@ -72,19 +72,21 @@ namespace MiniProject_Batch_Rename
             foreach (var file in filesSub)
             {
                 files.Add(new Files { Name = getNameBySplitPath(file), Path = file });
-            }*/
+            }
         }
         private void RenameFiles()
-        {
+        { 
             Files a = new Files();
-            var newn = " a2n NgtrONg TrieT  ";
-            a.replace(files[0].Name,newn, files[0].Path);
-            MessageBox.Show(files[0].Path);
+            a.replace(files[0].Name, "  bHi 17hc  abv.txt", files[0].Path);
+                
         }
         private void FullNameNormalizeFile()
         {
             Files a = new Files();
-            a.fullnamenormalize(files[0].Name, files[0].Path);
+            foreach (var file in files)
+            {
+                a.fullnamenormalize(file.Name, file.Path);
+            }
         }
         //folder
         private void addSysFolderDialog(object sender, RoutedEventArgs e)
@@ -100,8 +102,28 @@ namespace MiniProject_Batch_Rename
             }
             
             folderListView.ItemsSource = folders;
-            
+
+            MessageBox.Show("Chon OK de doi ten");
+
             RenameFolders();
+            folders.Clear();
+
+            foldersSub = Directory.GetDirectories(data.SelectedPath);
+
+            foreach (var folder in foldersSub)
+            {
+                folders.Add(new Folders { Name = getNameBySplitPath(folder), Path = folder });
+            }
+            FullNameNormalizeFolder();
+
+            folders.Clear();
+
+            foldersSub = Directory.GetDirectories(data.SelectedPath);
+
+            foreach (var folder in foldersSub)
+            {
+                folders.Add(new Folders { Name = getNameBySplitPath(folder), Path = folder });
+            }
 
         }
         private void RenameFolders()
@@ -112,7 +134,10 @@ namespace MiniProject_Batch_Rename
         private void FullNameNormalizeFolder()
         {
             Folders a = new Folders();
-            a.fullnamenormalize(folders[0].Name, folders[0].Path);
+            foreach (var folder in folders)
+            {
+                a.fullnamenormalize(folder.Name, folder.Path);
+            }
         }
     }
 }
