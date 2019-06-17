@@ -52,7 +52,8 @@ namespace MiniProject_Batch_Rename
             fileListView.ItemsSource = files;
             MessageBox.Show("Chon OK de doi ten");
             RenameFiles();
-            
+            newCase();
+
             //fileListView.Items.Clear();
             files.Clear();
 
@@ -65,8 +66,15 @@ namespace MiniProject_Batch_Rename
 
 
         }
+
+        private void newCase()
+        {
+            Files a = new Files();
+            a.newCase(files[0].Path);
+        }
         private void RenameFiles()
         {
+            
             Files a = new Files();
             a.replace("xuan", "ha", files[0].Path);
         }

@@ -13,3 +13,5 @@ C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\ob
 C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\MiniProject-Batch-Rename.exe
 C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\MiniProject-Batch-Rename.pdb
 C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\MiniProject-Batch-Rename.csprojAssemblyReference.cache
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\UpdateReplaceArgsDialog.g.cs
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\UpdateReplaceArgsDialog.baml

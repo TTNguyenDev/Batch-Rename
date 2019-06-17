@@ -61,6 +61,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="NewCase.cs" />
+    <Compile Include="NewCaseArg.cs" />
     <Compile Include="Replace.cs" />
     <Compile Include="ReplaceArgs.cs" />
     <Compile Include="Replacer.cs" />
