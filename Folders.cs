@@ -55,6 +55,7 @@ namespace MiniProject_Batch_Rename
             Directory.Move(path, a);
             Directory.Move(a, fullnamenormalizeAction.Process(path));
         }
+        
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }

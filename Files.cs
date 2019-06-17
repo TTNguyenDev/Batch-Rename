@@ -25,6 +25,16 @@ namespace MiniProject_Batch_Rename
             File.Move(path, replaceAction.Process(path));
         }
 
+        public void newCase( string path)
+        {
+            IAction newcase = new NewCase() { Args = new NewCaseArg() { needer = path } , _type = 3 };
+            File.Move(path, newcase.Process(path));
+        }
+        
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+
         public string _FullNameNormalize(string name)
         {
             var Result = "";
@@ -51,7 +61,5 @@ namespace MiniProject_Batch_Rename
             { Args = new FullNameNormalizeArgs() { OldName = originName, NewName= newname}};
             File.Move(path, fullnamenormalizeAction.Process(path));
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-
     }
 }
