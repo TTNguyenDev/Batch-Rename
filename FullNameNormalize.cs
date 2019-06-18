@@ -64,7 +64,7 @@ namespace MiniProject_Batch_Rename
             var args = Args as FullNameNormalizeArgs;
             var name = args.OldName;
 
-            var Result = origin.Replace(name, _FullNameNormalize(name));          
+            var Result = origin.Replace(name, _FullNameNormalize(name));
             return Result;
         }
 

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MiniProject_Batch_Rename
 {
@@ -57,8 +58,15 @@ namespace MiniProject_Batch_Rename
 
             if (screen.ShowDialog() == true)
             {
-                //MessageBox.Show("Args changed");
+                var args = Args as ReplaceArgs;
+                var oldfile = args.OldFile;
+                var newfile = args.NewFile;
+
+                MessageBox.Show(args.OldFile);
+                MessageBox.Show(args.NewFile);
+
                 RaiseChangeEvent("Description");
+
             }
         }
     }

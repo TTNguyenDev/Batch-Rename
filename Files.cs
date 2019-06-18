@@ -22,22 +22,37 @@ namespace MiniProject_Batch_Rename
         public void replace(string originName, string newName, string path) 
         {
             IAction replaceAction = new Replacer() { Args = new ReplaceArgs() { OldFile = originName, NewFile = newName } };
+
             File.Move(path, replaceAction.Process(path));
         }
+
+        public void newCase(string origin, string path)
+        {
+            IAction newcase = new NewCase() { Args = new NewCaseArg() { type = 3 } };
+            File.Move(path,path.Replace(origin,newcase.Process(origin)));
+        }
+
+        public void move(string origin, string path)
+        {
+
+            IAction _move = new Move() { Args = new MoveArgs() { } };
+            File.Move(path, path.Replace(origin, _move.Process(origin)));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public void fullnamenormalize(string originName, string path)
         {
             IAction fullnamenormalizeAction = new FullNameNormalize()
-            { Args = new FullNameNormalizeArgs() { OldName = originName}};
+            { Args = new FullNameNormalizeArgs() { OldName = originName } };
             File.Move(path, fullnamenormalizeAction.Process(path));
         }
 
         public void guidname(string originName, string path)
         {
             IAction guidAction = new GUIDName()
-            { Args = new GUIDArgs() { OldName = originName} };
+            { Args = new GUIDArgs() { OldName = originName } };
             File.Move(path, guidAction.Process(path));
         }
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

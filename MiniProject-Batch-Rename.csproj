@@ -61,12 +61,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="FullNameNormalize.cs" />
-    <Compile Include="FullNameNormalizeArgs.cs" />
     <Compile Include="GUIDName.cs" />
     <Compile Include="GUIDNameArgs.cs" />
+    <Compile Include="Move.cs" />
+    <Compile Include="MoveArgs.cs" />
+    <Compile Include="NewCase.cs" />
+    <Compile Include="NewCaseArg.cs" />
+    <Compile Include="FullNameNormalize.cs" />
+    <Compile Include="FullNameNormalizeArgs.cs" />
     <Compile Include="ReplaceArgs.cs" />
     <Compile Include="Replacer.cs" />
+    <Compile Include="UpdateNewCaseArgsDialog.xaml.cs">
+      <DependentUpon>UpdateNewCaseArgsDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateReplaceArgsDialog.xaml.cs">
       <DependentUpon>UpdateReplaceArgsDialog.xaml</DependentUpon>
     </Compile>
@@ -86,6 +93,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UpdateNewCaseArgsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UpdateReplaceArgsDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

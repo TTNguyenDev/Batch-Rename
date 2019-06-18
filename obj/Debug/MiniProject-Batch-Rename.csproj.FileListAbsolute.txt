@@ -46,4 +46,8 @@ D:\17CLC3\HK6\WINDOWS\Batch-Rename.git\obj\Debug\MiniProject-Batch-Rename.csproj
 D:\17CLC3\HK6\WINDOWS\Batch-Rename.git\obj\Debug\MiniProject-Batch-Rename.csproj.CoreCompileInputs.cache
 \\Mac\Home\Desktop\Batch-Rename(C#)\obj\Debug\UpdateReplaceArgsDialog.g.cs
 \\Mac\Home\Desktop\Batch-Rename(C#)\obj\Debug\UpdateReplaceArgsDialog.baml
+\\Mac\Home\Desktop\Batch-Rename(C#)\obj\Debug\UpdateNewCaseArgsDialog.g.cs
+\\Mac\Home\Desktop\Batch-Rename(C#)\obj\Debug\UpdateNewCaseArgsDialog.baml
 D:\17CLC3\HK6\WINDOWS\Batch-Rename.git\obj\Debug\MiniProject-Batch-Rename.csprojAssemblyReference.cache
+D:\17CLC3\HK6\WINDOWS\Batch-Rename.git\obj\Debug\UpdateNewCaseArgsDialog.g.cs
+D:\17CLC3\HK6\WINDOWS\Batch-Rename.git\obj\Debug\UpdateNewCaseArgsDialog.baml

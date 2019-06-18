@@ -17,7 +17,7 @@ namespace MiniProject_Batch_Rename
             {
                 var args = Args as GUIDArgs;
                 var oldname = args.OldName;
-               
+
                 var result = $"GUID: {oldname}";
                 return result;
             }

@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MiniProject_Batch_Rename"
         mc:Ignorable="d"
-       Title="UpdateReplaceArgsDialog" Loaded="Window_Loaded" Height="450" Width="800">
+       Title="Replace" Loaded="Window_Loaded" Height="200" Width="400">
     <Canvas>
+        <Label Content="OldName:" Canvas.Left="71" Canvas.Top="6"/>
         <TextBox Name="needleTextBox" Width="80" Height="25"
-                 Text="{Binding Needle}" Canvas.Left="71" Canvas.Top="37"/>
+                 Text="{Binding OldFile}" Canvas.Left="71" Canvas.Top="37"/>
 
+        <Label Content="NewName:" Canvas.Left="218" Canvas.Top="6"/>
         <TextBox Name="hammerTextBox" Width="80" Height="25"
-                 Text="{Binding Hammer}" Canvas.Left="71" Canvas.Top="80"/>
+                 Text="{Binding NewFile}" Canvas.Left="218" Canvas.Top="37"/>
 
         <Button Name="okButton" IsDefault="True" Click="OkButton_Click" Content="Update" Width="50" Height="25" Canvas.Left="218" Canvas.Top="80"/>
         <Button Name="cancelButton" IsCancel="True" Content="Cancel" Width="50" Height="25" Canvas.Left="282" Canvas.Top="80"/>

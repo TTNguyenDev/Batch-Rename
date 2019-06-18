@@ -25,7 +25,7 @@ namespace MiniProject_Batch_Rename
             Directory.Move(path, replaceAction.Process(path));
         }
 
-        
+        //fullname normalize
         public void fullnamenormalize(string originName, string path)
         {
             IAction fullnamenormalizeAction = new FullNameNormalize()
@@ -42,6 +42,7 @@ namespace MiniProject_Batch_Rename
             Directory.Move(path, a);
             Directory.Move(a, guidAction.Process(path));
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }
