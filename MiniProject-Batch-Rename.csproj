@@ -61,6 +61,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Move.cs" />
+    <Compile Include="MoveArgs.cs" />
     <Compile Include="NewCase.cs" />
     <Compile Include="NewCaseArg.cs" />
     <Compile Include="FullNameNormalize.cs" />

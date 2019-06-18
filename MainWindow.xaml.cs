@@ -53,7 +53,9 @@ namespace MiniProject_Batch_Rename
                 fileListView.ItemsSource = files;
             }
 
-            //If FBD.ShowDialog = Windows.Forms.DialogResult.OK
+            data.ShowDialog();
+
+            string[] filesSub = Directory.GetFiles(data.SelectedPath);
 
             
         }
@@ -93,6 +95,14 @@ namespace MiniProject_Batch_Rename
             foreach (var file in files)
             {
                 a.newCase(file.Name, file.Path);
+            }
+        }
+        private void move()
+        {
+            Files a = new Files();
+            foreach (var file in files)
+            {
+                a.move(file.Name, file.Path);
             }
         }
         private void RenameFiles()
