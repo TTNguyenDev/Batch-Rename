@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace MiniProject_Batch_Rename
         /// <summary>
         /// type: các option
         /// </summary>
-        public int _type { get; set; }
+        
         public string Description => throw new NotImplementedException();
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -30,13 +30,13 @@ namespace MiniProject_Batch_Rename
         public string Process(string origin)
         {
             var arg = Args as NewCaseArg;
-            _type = arg.type;
+            
             var result = "";
-            if (_type == 1)
+            if (arg.type == 1)
                 result = origin.ToUpper();
-            else if (_type == 2)
+            else if (arg.type == 2)
                 result = origin.ToLower();
-            else if(_type == 3)
+            else if(arg.type == 3)
             {
 
                 origin = origin.Trim();
@@ -51,7 +51,7 @@ namespace MiniProject_Batch_Rename
              
                 
             }
-            return result;
+            return result.Trim();
         }
 
         public void ShowUpdateArgDialog()

@@ -19,7 +19,7 @@ namespace MiniProject_Batch_Rename
         public string Path { get => _path; set => _path = value; }
         public string NewName { get => _newName; set => _newName = value; }
 
-        public void replace(string originName, string newName, string path) 
+        public void replace(string originName, string newName, string path)
         {
             IAction replaceAction = new Replacer() { Args = new ReplaceArgs() { OldFile = originName, NewFile = newName } };
 
@@ -28,8 +28,8 @@ namespace MiniProject_Batch_Rename
 
         public void newCase(string origin, string path)
         {
-            IAction newcase = new NewCase() { Args = new NewCaseArg() { type = 3 } };
-            File.Move(path,path.Replace(origin,newcase.Process(origin)));
+            IAction newcase = new NewCase() { Args = new NewCaseArg() { type = 1 } };
+            File.Move(path, path.Replace(origin, newcase.Process(origin)));
         }
 
         public void move(string origin, string path)
@@ -44,15 +44,16 @@ namespace MiniProject_Batch_Rename
         public void fullnamenormalize(string originName, string path)
         {
             IAction fullnamenormalizeAction = new FullNameNormalize()
-            { Args = new FullNameNormalizeArgs() { OldName = originName}};
+            { Args = new FullNameNormalizeArgs() { OldName = originName } };
             File.Move(path, fullnamenormalizeAction.Process(path));
         }
 
         public void guidname(string originName, string path)
         {
             IAction guidAction = new GUIDName()
-            { Args = new GUIDArgs() { OldName = originName} };
+            { Args = new GUIDArgs() { OldName = originName } };
             File.Move(path, guidAction.Process(path));
         }
     }
 }
+

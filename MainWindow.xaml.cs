@@ -39,6 +39,7 @@ namespace MiniProject_Batch_Rename
         //files
         private void addSysFileDialog(object sender, RoutedEventArgs e)
         {
+           
             System.Windows.Forms.FolderBrowserDialog data = new System.Windows.Forms.FolderBrowserDialog();
 
             if (data.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -51,35 +52,27 @@ namespace MiniProject_Batch_Rename
                 }
 
                 fileListView.ItemsSource = files;
+                newCase();
+
+                //fileListView.Items.Clear();
+                files.Clear();
+
+                filesSub = Directory.GetFiles(data.SelectedPath);
+
+                foreach (var file in filesSub)
+                {
+                    files.Add(new Files { Name = getNameBySplitPath(file), Path = file });
+                }
+                // FullNameNormalizeFile();
+
+                //fileListView.Items.Clear();
+                //files.Clear();
             }
-            
         }
 
         private void actionForTest()
         {
-            //RenameFiles();
-            //newCase();
-
-            ////fileListView.Items.Clear();
-            //files.Clear();
-
-            //filesSub = Directory.GetFiles(data.SelectedPath);
-
-            //foreach (var file in filesSub)
-            //{
-            //    files.Add(new Files { Name = getNameBySplitPath(file), Path = file });
-            //}
-            //// FullNameNormalizeFile();
-
-            ////fileListView.Items.Clear();
-            //files.Clear();
-
-            //filesSub = Directory.GetFiles(data.SelectedPath);
-
-            //foreach (var file in filesSub)
-            //{
-            //    files.Add(new Files { Name = getNameBySplitPath(file), Path = file });
-            //}
+            
         }
 
 
