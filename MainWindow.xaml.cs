@@ -114,6 +114,15 @@ namespace MiniProject_Batch_Rename
                 a.fullnamenormalize(file.Name, file.Path);
             }
         }
+        
+        private void GuidNameFiles()
+        {
+            Files a = new Files();
+            foreach(var file in files)
+            {
+                a.guidname(file.Name, file.Path);
+            }
+        }
         //folder
         private void addSysFolderDialog(object sender, RoutedEventArgs e)
         {
@@ -140,6 +149,14 @@ namespace MiniProject_Batch_Rename
             foreach (var folder in folders)
             {
                 a.fullnamenormalize(folder.Name, folder.Path);
+            }
+        }
+        private void GuidNameFolders()
+        {
+            Folders a = new Folders();
+            foreach (var folder in folders)
+            {
+                a.guidname(folder.Name, folder.Path);
             }
         }
 
