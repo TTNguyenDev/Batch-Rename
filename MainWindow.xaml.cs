@@ -52,11 +52,6 @@ namespace MiniProject_Batch_Rename
 
                 fileListView.ItemsSource = files;
             }
-
-            data.ShowDialog();
-
-            string[] filesSub = Directory.GetFiles(data.SelectedPath);
-
             
         }
 
