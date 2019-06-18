@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MiniProject_Batch_Rename
 {
-    class NewCaseArg : IArgs
+    public class NewCaseArg : IArgs
     {
         public int type { get; set; }
     }

@@ -99,7 +99,7 @@
 
 
             <ListView DockPanel.Dock="Left">
-                <ListViewItem Background="LightCoral" Foreground="Red" FontFamily="Verdana" FontSize="12" FontWeight="Bold">
+                <ListViewItem Background="LightCoral" Foreground="Red" FontFamily="Verdana" FontSize="12" FontWeight="Bold" MouseDoubleClick="handleNewCaseAction">
                     <CheckBox Name="newCaseCheckBox">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
@@ -107,7 +107,7 @@
                         </StackPanel>
                     </CheckBox>
                 </ListViewItem>
-                <ListViewItem Background="LightGray" Foreground="Black" FontFamily="Georgia" FontSize="14" FontWeight="Bold">
+                <ListViewItem Background="LightGray" Foreground="Black" FontFamily="Georgia" FontSize="14" FontWeight="Bold" MouseDoubleClick="handleMoveAction">
                     <CheckBox Name="moveCheckBox">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
@@ -115,35 +115,27 @@
                         </StackPanel>
                     </CheckBox>
                 </ListViewItem>
-                <ListViewItem Background="LightBlue" Foreground="Purple" FontFamily="Verdana" FontSize="12" FontWeight="Bold">
+                <ListViewItem Background="LightBlue" Foreground="Purple" FontFamily="Verdana" FontSize="12" FontWeight="Bold" MouseDoubleClick="handleReplaceAction">
                     <CheckBox Name="removePatternCheckBox">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            <TextBlock Text="Remove Pattern" Margin="5"/>
+                            <TextBlock Margin="5" Text="Replace"/>
                         </StackPanel>
                     </CheckBox>
                 </ListViewItem>
-                <ListViewItem Background="LightGreen" Foreground="Green" FontFamily="Georgia" FontSize="14" FontWeight="Bold">
+                <ListViewItem Background="LightGreen" Foreground="Green" FontFamily="Georgia" FontSize="14" FontWeight="Bold" MouseDoubleClick="handleFullNameNormalize">
                     <CheckBox Name="replaceCheckBox">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            <TextBlock Text="RePlace" Margin="5"/>
+                            <TextBlock Text="Fullname normalize" Margin="5"/>
                         </StackPanel>
                     </CheckBox>
                 </ListViewItem>
-                <ListViewItem Background="LightBlue" Foreground="Blue" FontFamily="Verdana" FontSize="12" FontWeight="Bold">
-                    <CheckBox Name="trimCheckBox">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            <TextBlock Text="Trim" Margin="5"/>
-                        </StackPanel>
-                    </CheckBox>
-                </ListViewItem>
-                <ListViewItem Background="LightSlateGray" Foreground="Orange" FontFamily="Georgia" FontSize="14" FontWeight="Bold">
+                <ListViewItem Background="LightSlateGray" Foreground="Orange" FontFamily="Georgia" FontSize="14" FontWeight="Bold" MouseDoubleClick="handleUniqueName">
                     <CheckBox Name="newNameCheckBox">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            <TextBlock Text="NewName" Margin="5"/>
+                            <TextBlock Margin="5"><Span FontSize="14.6666666666667" FontFamily="Segoe UI"><Run Text="Unique name"/></Span></TextBlock>
                         </StackPanel>
                     </CheckBox>
                 </ListViewItem>
@@ -205,7 +197,6 @@
                                         <TextBlock Text="Add" Margin="5"/>
                                     </StackPanel>
                                 </Button>
-                                <Button Content="New" Margin="5"/>
                             </ToolBar>
 
                             <ListView  Name="folderListView" Height="315" >

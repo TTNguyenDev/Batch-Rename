@@ -56,7 +56,15 @@ namespace MiniProject_Batch_Rename
 
         public void ShowUpdateArgDialog()
         {
-            throw new NotImplementedException();
+            var screen = new UpdateNewCaseArgsDialog(Args as NewCaseArg);
+
+            if (screen.ShowDialog() == true)
+            {
+                var args = Args as NewCaseArg;
+
+                RaiseChangeEvent("Description");
+
+            }
         }
     }
 }

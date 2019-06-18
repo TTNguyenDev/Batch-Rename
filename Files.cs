@@ -34,8 +34,6 @@ namespace MiniProject_Batch_Rename
         
         public event PropertyChangedEventHandler PropertyChanged;
 
-
-
         public string _FullNameNormalize(string name)
         {
             var Result = "";

@@ -40,41 +40,52 @@ namespace MiniProject_Batch_Rename
         private void addSysFileDialog(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.FolderBrowserDialog data = new System.Windows.Forms.FolderBrowserDialog();
-            data.ShowDialog();
 
-            string[] filesSub = Directory.GetFiles(data.SelectedPath);
-
-            foreach (var file in filesSub)
+            if (data.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                files.Add(new Files { Name = getNameBySplitPath(file), Path = file });
+                string[] filesSub = Directory.GetFiles(data.SelectedPath);
+
+                foreach (var file in filesSub)
+                {
+                    files.Add(new Files { Name = getNameBySplitPath(file), Path = file });
+                }
+
+                fileListView.ItemsSource = files;
             }
 
-            fileListView.ItemsSource = files;
-            MessageBox.Show("Chon OK de doi ten");
-            //RenameFiles();
-             newCase();
+            //If FBD.ShowDialog = Windows.Forms.DialogResult.OK
 
-            //fileListView.Items.Clear();
-            files.Clear();
-           
-            filesSub = Directory.GetFiles(data.SelectedPath);
             
-            foreach (var file in filesSub)
-            {
-                files.Add(new Files { Name = getNameBySplitPath(file), Path = file });
-            }
-           // FullNameNormalizeFile();
-
-            //fileListView.Items.Clear();
-            files.Clear();
-
-            filesSub = Directory.GetFiles(data.SelectedPath);
-
-            foreach (var file in filesSub)
-            {
-                files.Add(new Files { Name = getNameBySplitPath(file), Path = file });
-            }
         }
+
+        private void actionForTest()
+        {
+            //RenameFiles();
+            //newCase();
+
+            ////fileListView.Items.Clear();
+            //files.Clear();
+
+            //filesSub = Directory.GetFiles(data.SelectedPath);
+
+            //foreach (var file in filesSub)
+            //{
+            //    files.Add(new Files { Name = getNameBySplitPath(file), Path = file });
+            //}
+            //// FullNameNormalizeFile();
+
+            ////fileListView.Items.Clear();
+            //files.Clear();
+
+            //filesSub = Directory.GetFiles(data.SelectedPath);
+
+            //foreach (var file in filesSub)
+            //{
+            //    files.Add(new Files { Name = getNameBySplitPath(file), Path = file });
+            //}
+        }
+
+
 
         private void newCase()
         {
@@ -92,7 +103,6 @@ namespace MiniProject_Batch_Rename
         }
         private void FullNameNormalizeFile()
         {
-            
             Files a = new Files();
             foreach (var file in files)
             {
@@ -113,29 +123,6 @@ namespace MiniProject_Batch_Rename
             }
             
             folderListView.ItemsSource = folders;
-
-            MessageBox.Show("Chon OK de doi ten");
-
-            RenameFolders();
-            folders.Clear();
-
-            foldersSub = Directory.GetDirectories(data.SelectedPath);
-
-            foreach (var folder in foldersSub)
-            {
-                folders.Add(new Folders { Name = getNameBySplitPath(folder), Path = folder });
-            }
-            FullNameNormalizeFolder();
-
-            folders.Clear();
-
-            foldersSub = Directory.GetDirectories(data.SelectedPath);
-
-            foreach (var folder in foldersSub)
-            {
-                folders.Add(new Folders { Name = getNameBySplitPath(folder), Path = folder });
-            }
-
         }
         private void RenameFolders()
         {
@@ -149,6 +136,33 @@ namespace MiniProject_Batch_Rename
             {
                 a.fullnamenormalize(folder.Name, folder.Path);
             }
+        }
+
+        private void handleNewCaseAction(object sender, MouseButtonEventArgs e)
+        {
+            IAction a = new Replacer() { Args = new ReplaceArgs() { OldFile = "icescream", NewFile = "chocolate" } };
+            a.ShowUpdateArgDialog();
+       
+        }
+
+        private void handleMoveAction(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void handleReplaceAction(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void handleFullNameNormalize(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void handleUniqueName(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
