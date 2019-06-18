@@ -6,14 +6,7 @@ using System.Threading.Tasks;
 
 namespace MiniProject_Batch_Rename
 {
-    /// <summary>
-    /// Đối số của việc xử lí
-    /// </summary>
-
-    /// <summary>
-    /// Lớp chứa đối số của việc thay thế
-    /// </summary>
-    public class FullNameNormalizeArgs : IArgs
+    public class GUIDArgs : IArgs
     {
         /// <summary>
         /// Chuỗi cần phải tìm

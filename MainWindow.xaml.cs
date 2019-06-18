@@ -62,7 +62,9 @@ namespace MiniProject_Batch_Rename
             {
                 files.Add(new Files { Name = getNameBySplitPath(file), Path = file });
             }
-            FullNameNormalizeFile();
+
+            //FullNameNormalizeFile();
+            GuidNameFiles();
 
             //fileListView.Items.Clear();
             files.Clear();
@@ -77,7 +79,7 @@ namespace MiniProject_Batch_Rename
         private void RenameFiles()
         { 
             Files a = new Files();
-            a.replace(files[0].Name, "  bHi 17hc  abv.txt", files[0].Path);
+            a.replace(files[0].Name, "  bHi 1c  abv.txt", files[0].Path);
                 
         }
         private void FullNameNormalizeFile()
@@ -86,6 +88,15 @@ namespace MiniProject_Batch_Rename
             foreach (var file in files)
             {
                 a.fullnamenormalize(file.Name, file.Path);
+            }
+        }
+
+        private void GuidNameFiles()
+        {
+            Files a = new Files();
+            foreach(var file in files)
+            {
+                a.guidname(file.Name, file.Path);
             }
         }
         //folder
@@ -114,6 +125,7 @@ namespace MiniProject_Batch_Rename
             {
                 folders.Add(new Folders { Name = getNameBySplitPath(folder), Path = folder });
             }
+
             FullNameNormalizeFolder();
 
             folders.Clear();
@@ -129,7 +141,7 @@ namespace MiniProject_Batch_Rename
         private void RenameFolders()
         {
             Folders a = new Folders();
-            a.replace(folders[0].Name, " ssha hAi Yen ", folders[0].Path);
+            a.replace(folders[0].Name, "   hai Yen aHihi ", folders[0].Path);
         }
         private void FullNameNormalizeFolder()
         {
@@ -137,6 +149,14 @@ namespace MiniProject_Batch_Rename
             foreach (var folder in folders)
             {
                 a.fullnamenormalize(folder.Name, folder.Path);
+            }
+        }        
+        private void GuidNameFolders()
+        {
+            Folders a = new Folders();
+            foreach (var folder in folders)
+            {
+                a.guidname(folder.Name, folder.Path);
             }
         }
     }

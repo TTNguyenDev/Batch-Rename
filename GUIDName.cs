@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 
 namespace MiniProject_Batch_Rename
 {
-    /// <summary>
-    /// Hành động thay thế chuỗi
-    /// </summary>
-    public class FullNameNormalize : IAction, INotifyPropertyChanged
+    public class GUIDName : IAction, INotifyPropertyChanged
     {
         public IArgs Args { get; set; }
 
@@ -18,10 +15,10 @@ namespace MiniProject_Batch_Rename
         {
             get
             {
-                var args = Args as FullNameNormalizeArgs;
+                var args = Args as GUIDArgs;
                 var oldname = args.OldName;
-
-                var result = $"Chuan hoa {oldname} ";
+               
+                var result = $"GUID: {oldname}";
                 return result;
             }
         }
@@ -39,32 +36,14 @@ namespace MiniProject_Batch_Rename
         /// </summary>
         /// <param name="origin">Chuỗi gốc</param>
         /// <returns>Chuỗi sau khi thay thế</returns>
-        public string _FullNameNormalize(string name)
-        {
-            var _result = "";
-            name = name.Trim();
-
-            while (name.IndexOf("  ") != -1)
-            {
-                name = name.Replace("  ", " ");
-            }
-            var SubName = name.Split(' ');
-            for (int i = 0; i < SubName.Length; i++)
-            {
-                var FirstChar = SubName[i].Substring(0, 1);
-                var OtherChar = SubName[i].Substring(1);
-                SubName[i] = FirstChar.ToUpper() + OtherChar.ToLower();
-                _result += SubName[i] + " ";
-            }
-            _result = _result.Trim();
-            return _result;
-        }
         public string Process(string origin)
         {
-            var args = Args as FullNameNormalizeArgs;
+            var args = Args as GUIDArgs;
             var name = args.OldName;
 
-            var Result = origin.Replace(name, _FullNameNormalize(name));          
+            Guid newName = Guid.NewGuid();
+            var Result = origin.Replace(name, newName.ToString());
+
             return Result;
         }
 
@@ -80,4 +59,3 @@ namespace MiniProject_Batch_Rename
         }
     }
 }
-

@@ -63,6 +63,8 @@
     </ApplicationDefinition>
     <Compile Include="FullNameNormalize.cs" />
     <Compile Include="FullNameNormalizeArgs.cs" />
+    <Compile Include="GUIDName.cs" />
+    <Compile Include="GUIDNameArgs.cs" />
     <Compile Include="ReplaceArgs.cs" />
     <Compile Include="Replacer.cs" />
     <Compile Include="UpdateReplaceArgsDialog.xaml.cs">
