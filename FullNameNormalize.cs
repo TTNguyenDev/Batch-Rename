@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -39,14 +39,32 @@ namespace MiniProject_Batch_Rename
         /// </summary>
         /// <param name="origin">Chuỗi gốc</param>
         /// <returns>Chuỗi sau khi thay thế</returns>
+        public string _FullNameNormalize(string name)
+        {
+            var _result = "";
+            name = name.Trim();
+
+            while (name.IndexOf("  ") != -1)
+            {
+                name = name.Replace("  ", " ");
+            }
+            var SubName = name.Split(' ');
+            for (int i = 0; i < SubName.Length; i++)
+            {
+                var FirstChar = SubName[i].Substring(0, 1);
+                var OtherChar = SubName[i].Substring(1);
+                SubName[i] = FirstChar.ToUpper() + OtherChar.ToLower();
+                _result += SubName[i] + " ";
+            }
+            _result = _result.Trim();
+            return _result;
+        }
         public string Process(string origin)
         {
             var args = Args as FullNameNormalizeArgs;
             var name = args.OldName;
-            var newname = args.NewName;
 
-            var Result = origin.Replace(name, newname);
-           
+            var Result = origin.Replace(name, _FullNameNormalize(name));          
             return Result;
         }
 
@@ -62,4 +80,3 @@ namespace MiniProject_Batch_Rename
         }
     }
 }
-
