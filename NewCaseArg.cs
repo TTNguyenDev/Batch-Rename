@@ -8,6 +8,6 @@ namespace MiniProject_Batch_Rename
 {
     class NewCaseArg : IArgs
     {
-        public string needer { get; set; }
+        public int type { get; set; }
     }
 }

@@ -30,7 +30,7 @@ namespace MiniProject_Batch_Rename
         public string Process(string origin)
         {
             var arg = Args as NewCaseArg;
-            var _needer = arg.needer;
+            _type = arg.type;
             var result = "";
             if (_type == 1)
                 result = origin.ToUpper();
