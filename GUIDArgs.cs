@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MiniProject_Batch_Rename
 {
-    class Class1
+    public class GUIDArgs : IArgs
     {
+        /// <summary>
+        /// Chuỗi cần phải tìm
+        /// </summary>
+        public string OldName { get; set; }
     }
 }
