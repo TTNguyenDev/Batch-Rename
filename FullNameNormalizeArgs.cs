@@ -19,5 +19,10 @@ namespace MiniProject_Batch_Rename
         /// Chuỗi cần phải tìm
         /// </summary>
         public string OldName { get; set; }
+        /// <summary>
+        /// Chuỗi phải thay thế
+        /// </summary>
+        public string NewName { get; set; }
+
     }
 }
