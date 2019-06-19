@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="UpdateNewCaseArgsDialog" Loaded="Window_Loaded" Height="195.561" Width="389.953">
     <Canvas>
-        <Label Content="OldName:" Canvas.Left="71" Canvas.Top="6"/>
+        <Label Content="Type" Canvas.Left="71" Canvas.Top="6"/>
         <TextBox Name="newNameBox" Width="228" Height="25"
-                 Text="{Binding newName}" Canvas.Left="71" Canvas.Top="37"/>
-        <Button Name="saveButton" Content="Save" Height="30" Width="100" Canvas.Left="71" Canvas.Top="81"/>
-        <Button Name="cancelButton" Content="Cancel" Height="30" Width="100" Canvas.Left="199" Canvas.Top="81" />
+                 Text="{Binding type}" Canvas.Left="71" Canvas.Top="37"/>
+        <Button Name="saveButton" IsDefault="True" Content="Save" Height="30" Width="100" Canvas.Left="71" Canvas.Top="81" Click="OkButton_Click"/>
+        <Button Name="cancelButton" IsCancel="True" Content="Cancel" Height="30" Width="100" Canvas.Left="199" Canvas.Top="81" />
     </Canvas>
 </Window>

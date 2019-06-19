@@ -35,7 +35,7 @@
                     <ComboBoxItem Content="" />
                 </ComboBox>
                 <!-- Buton Start Batching-->
-                <Button>
+                <Button Click="startBatch">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Images/Custom-Icon-Design-Flatastic-9-Start.ico" Width="15" RenderOptions.BitmapScalingMode="HighQuality"/>
                         <TextBlock Text="START BATCH" Margin="5"/>
@@ -107,7 +107,7 @@
                         </StackPanel>
                     </CheckBox>
                 </ListViewItem>
-                <ListViewItem Background="LightGray" Foreground="Black" FontFamily="Georgia" FontSize="14" FontWeight="Bold" MouseDoubleClick="handleMoveAction">
+                <ListViewItem Background="LightGray" Foreground="Black" FontFamily="Georgia" FontSize="14" FontWeight="Bold">
                     <CheckBox Name="moveCheckBox">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
@@ -116,23 +116,23 @@
                     </CheckBox>
                 </ListViewItem>
                 <ListViewItem Background="LightBlue" Foreground="Purple" FontFamily="Verdana" FontSize="12" FontWeight="Bold" MouseDoubleClick="handleReplaceAction">
-                    <CheckBox Name="removePatternCheckBox">
+                    <CheckBox Name="replaceCheckBox">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
                             <TextBlock Margin="5" Text="Replace"/>
                         </StackPanel>
                     </CheckBox>
                 </ListViewItem>
-                <ListViewItem Background="LightGreen" Foreground="Green" FontFamily="Georgia" FontSize="14" FontWeight="Bold" MouseDoubleClick="handleFullNameNormalize">
-                    <CheckBox Name="replaceCheckBox">
+                <ListViewItem Background="LightGreen" Foreground="Green" FontFamily="Georgia" FontSize="14" FontWeight="Bold">
+                    <CheckBox Name="fullnameNormalizeCheckBox">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
                             <TextBlock Text="Fullname normalize" Margin="5"/>
                         </StackPanel>
                     </CheckBox>
                 </ListViewItem>
-                <ListViewItem Background="LightSlateGray" Foreground="Orange" FontFamily="Georgia" FontSize="14" FontWeight="Bold" MouseDoubleClick="handleUniqueName">
-                    <CheckBox Name="newNameCheckBox">
+                <ListViewItem Background="LightSlateGray" Foreground="Orange" FontFamily="Georgia" FontSize="14" FontWeight="Bold">
+                    <CheckBox Name="uniqueNameCheckBox">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
                             <TextBlock Margin="5"><Span FontSize="14.6666666666667" FontFamily="Segoe UI"><Run Text="Unique name"/></Span></TextBlock>
