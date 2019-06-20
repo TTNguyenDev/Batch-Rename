@@ -14,7 +14,15 @@ namespace MiniProject_Batch_Rename
         /// type: các option
         /// </summary>
         
-        public string Description => throw new NotImplementedException();
+        public string Description
+        {
+            get
+            {
+                var arg = Args as NewCaseArg;
+                var result = $"Newcase with type {arg.type}";
+                return result;
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         void RaiseChangeEvent(string propertyName)

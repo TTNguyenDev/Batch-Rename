@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MiniProject_Batch_Rename"
         mc:Ignorable="d"
-        Title="My Rename" Height="450" Width="800" >
+        Title="My Rename" Height="450" Width="800" Loaded="Window_Loaded" >
     <Grid>
 
 
@@ -35,7 +35,7 @@
                     <ComboBoxItem Content="" />
                 </ComboBox>
                 <!-- Buton Start Batching-->
-                <Button Click="startBatch">
+                <Button Click="startBatch" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Images/Custom-Icon-Design-Flatastic-9-Start.ico" Width="15" RenderOptions.BitmapScalingMode="HighQuality"/>
                         <TextBlock Text="START BATCH" Margin="5"/>
@@ -98,8 +98,42 @@
             </ToolBar>
 
 
-            <ListView DockPanel.Dock="Left">
-                <ListViewItem Background="LightCoral" Foreground="Red" FontFamily="Verdana" FontSize="12" FontWeight="Bold" MouseDoubleClick="handleNewCaseAction">
+            <ListView DockPanel.Dock="Left" Name="actionListView" >
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <EventSetter Event="MouseDoubleClick"  Handler="ListViewItem_MouseDoubleClick"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn  Width="40">
+                           
+                        </GridViewColumn>
+                        <GridViewColumn Header="Action" Width="150" DisplayMemberBinding="{Binding Description}" />
+                        <GridViewColumn>
+                          
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox Margin="7"  />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn >
+
+                    </GridView>
+                </ListView.View>
+                <!--<ListView.ItemTemplate>
+                    
+                    <DataTemplate>
+                        <CheckBox Name="newCaseCheckBox">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                <TextBlock Text="{Binding Description}" Margin="5"/>
+                            </StackPanel>
+                        </CheckBox>
+                    </DataTemplate>
+                </ListView.ItemTemplate>-->
+
+                <!--<ListViewItem Background="LightCoral" Foreground="Red" FontFamily="Verdana" FontSize="12" FontWeight="Bold" MouseDoubleClick="handleNewCaseAction">
                     <CheckBox Name="newCaseCheckBox">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
@@ -149,7 +183,7 @@
                             </ComboBox>
                         </StackPanel>
                     </StackPanel>
-                </ListViewItem>
+                </ListViewItem>-->
             </ListView>
             <StackPanel DockPanel.Dock="Right" >
                 <TabControl Height="302">

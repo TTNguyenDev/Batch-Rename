@@ -37,7 +37,7 @@ namespace MiniProject_Batch_Rename
 
         public void ShowUpdateArgDialog()
         {
-            throw new NotImplementedException();
+            return;
         }
     }
 

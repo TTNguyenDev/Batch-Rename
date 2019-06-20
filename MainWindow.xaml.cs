@@ -29,10 +29,23 @@ namespace MiniProject_Batch_Rename
 
         BindingList<Files> _files = new BindingList<Files>();
         BindingList<Folders> _folders = new BindingList<Folders>();
-        List<IAction> _actions = new List<IAction>();
+        List<IAction> _actions;
         string[] filesSub;
         System.Windows.Forms.FolderBrowserDialog data;
-
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+            
+            _actions = new List<IAction>()
+            {
+                new NewCase(){ Args = new NewCaseArg(){type = 2 }},
+                new Move(){ Args = new MoveArgs(){ }},
+                new Replacer(){ Args = new ReplaceArgs(){OldFile = "abc", NewFile="def" }},
+                new FullNameNormalize(){ Args = new FullNameNormalizeArgs(){}},
+                new GUIDName(){ Args = new GUIDArgs(){ }},
+            };
+            actionListView.ItemsSource = _actions;
+        }
         private string getNameBySplitPath(string path)
         {
             string[] result = path.Split('\\');
@@ -95,18 +108,6 @@ namespace MiniProject_Batch_Rename
             }
         }
 
-        private void handleNewCaseAction(object sender, MouseButtonEventArgs e)
-        {
-            IAction a = new NewCase() { Args = new NewCaseArg() { type = 1 } };
-            a.ShowUpdateArgDialog();
-        }
-
-        private void handleReplaceAction(object sender, MouseButtonEventArgs e)
-        {
-            IAction a = new Replacer() { Args = new ReplaceArgs() { OldFile = "triet", NewFile = "yen" } };
-            a.ShowUpdateArgDialog();
-
-        }
 
         private void refreshListView()
         {
@@ -120,6 +121,16 @@ namespace MiniProject_Batch_Rename
             }
         }
 
+        private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var action = actionListView.SelectedItem as IAction;
+            action.ShowUpdateArgDialog();
+        }
+
+        
+
+
+
         private void startBatch(object sender, RoutedEventArgs e)
         {
             if (fileListView.Items.Count == 0)
@@ -130,51 +141,21 @@ namespace MiniProject_Batch_Rename
 
             Files fileInstance = new Files();
             Folders folderInstance = new Folders();
-            if ((bool)newCaseCheckBox.IsChecked)
-            { 
+            // if ()
+           
+           
                 foreach (var file in _files)
                 {
-                    fileInstance.newCase(file.Name, file.Path);
+                    fileInstance.move(file.Path, file.Path.Replace(file.Name,_actions[0].Process(file.Name)));
                 }
-            }
+            
 
-            if ((bool)moveCheckBox.IsChecked) {
-                foreach (var file in _files)
-                {
-                    fileInstance.move(file.Name, file.Path);
-                }
-            }
-
-            if ((bool)replaceCheckBox.IsChecked)
-            {
-              
-                foreach (var file in _files)
-                {
-                    fileInstance.replace("khung", "hahaha nnnn", file.Path);
-                }
-            }
-
-            if ((bool)fullnameNormalizeCheckBox.IsChecked)
-            {
-              
-                foreach (var file in _files)
-                {
-                    fileInstance.fullnamenormalize(file.Name, file.Path);
-                }
-            }
-
-            if ((bool)uniqueNameCheckBox.IsChecked)
-            {
-               
-                foreach (var file in _files)
-                {
-                    fileInstance.guidname(file.Name, file.Path);
-                }
-            }
-
+            
             refreshListView();
             MessageBox.Show("THANH CONG");
 
         }
+
+      
     }
 }
