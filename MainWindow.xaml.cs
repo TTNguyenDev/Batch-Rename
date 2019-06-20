@@ -148,10 +148,13 @@ namespace MiniProject_Batch_Rename
                 {
                     fileInstance.move(file.Path, file.Path.Replace(file.Name,_actions[0].Process(file.Name)));
                 }
-            
 
-            
             refreshListView();
+            foreach (var file in _files)
+            {
+                fileInstance.move(file.Path, file.Path.Replace(file.Name, _actions[2].Process(file.Name)));
+            }
+
             MessageBox.Show("THANH CONG");
 
         }
