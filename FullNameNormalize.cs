@@ -62,9 +62,8 @@ namespace MiniProject_Batch_Rename
         public string Process(string origin)
         {
             var args = Args as FullNameNormalizeArgs;
-            var name = origin.Substring(0, origin.LastIndexOf('.')); ;
-
-            var Result = origin.Replace(name, _FullNameNormalize(name));          
+                    
+            var Result = origin.Replace(origin, _FullNameNormalize(origin));          
             return Result;
         }
 

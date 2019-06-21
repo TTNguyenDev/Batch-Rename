@@ -37,7 +37,20 @@ namespace MiniProject_Batch_Rename
         public string Process(string origin)
         {
             var args = Args as GUIDArgs;
-            var name = origin.Substring(0, origin.LastIndexOf('.'));
+            int i = 0;
+            foreach(var ori in origin)
+            {
+                if (ori == '.')
+                    i++;
+
+            }
+            var name = "";
+            if (i != 0)
+            {
+                name = origin.Substring(0, origin.LastIndexOf('.'));
+            }
+            else
+                name = origin;
 
             Guid newName = Guid.NewGuid();
             var Result = origin.Replace(name, newName.ToString());

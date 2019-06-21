@@ -37,15 +37,42 @@ namespace MiniProject_Batch_Rename
             var arg = Args as MoveArgs;
             //var iSBN = arg.ISBN;
             origin = origin.Trim();
+            int i = 0;
+            foreach(var ori in origin)
+            {
+                if (ori == '.')
+                    i++;
+
+            }
+            var result = "";
             
-            string newStringProcess = origin.Substring(0, origin.LastIndexOf('.'));
+            if (i != 0)
+            {
+                string newStringProcess = origin.Substring(0, origin.LastIndexOf('.'));
+                string endFile = origin.Substring(origin.LastIndexOf('.'));
+                string iSBN = origin.Substring(0, arg.amount);
+                string fileName = newStringProcess.Substring(arg.amount);
+                origin = origin.Replace(fileName, iSBN);
+
+                // var result = fileName + " " + origin.Substring(arg.amount).Trim();
+                result = fileName.Trim() + " " + iSBN.Trim() + endFile.Trim();
+            }
+            else
+            {
+                string iSBN = origin.Substring(0, arg.amount);
+                string fileName = origin.Substring(arg.amount);
+                origin = origin.Replace(fileName, iSBN);
+                result = fileName.Trim() + " " + iSBN.Trim();
+            }
+
+            /*string newStringProcess = origin.Substring(0, origin.LastIndexOf('.'));
             string endFile = origin.Substring(origin.LastIndexOf('.'));
             string iSBN = origin.Substring(0, arg.amount);
             string fileName = newStringProcess.Substring(arg.amount);
             origin = origin.Replace(fileName, iSBN);
 
             // var result = fileName + " " + origin.Substring(arg.amount).Trim();
-            var result = fileName.Trim()+" " + iSBN.Trim() + endFile.Trim();
+            var result = fileName.Trim()+" " + iSBN.Trim() + endFile.Trim();*/
             return result.Trim();
         }
 

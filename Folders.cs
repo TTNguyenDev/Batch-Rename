@@ -23,10 +23,12 @@ namespace MiniProject_Batch_Rename
         {
             // _action = new NewCase() { Args = new NewCaseArg() { type = 1} };
             // File.Move(path, path.Replace(origin, _action.Process(origin)));
-            
+          
             string a = "a";
+            var result = path;
+            result = result.Replace(origin, _action.Process(origin));
             Directory.Move(path, a);
-            Directory.Move(a, _action.Process(path));
+            Directory.Move(a, result);
            
 
         }
@@ -41,17 +43,16 @@ namespace MiniProject_Batch_Rename
         {
             IAction fullnamenormalizeAction = new FullNameNormalize()
             { Args = new FullNameNormalizeArgs() {  } };
-            string a = "a";
+            string a = "aa";
             Directory.Move(path, a);
-            Directory.Move(a, fullnamenormalizeAction.Process(path));
+            Directory.Move(a,fullnamenormalizeAction.Process(path));
+           
         }
         public void guidname(string originName, string path)
         {
             IAction guidAction = new GUIDName()
             { Args = new GUIDArgs() {  } };
-            string a = "aa";
-            Directory.Move(path, a);
-            Directory.Move(a, guidAction.Process(path));
+            Directory.Move(path, guidAction.Process(path));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
