@@ -16,9 +16,9 @@ namespace MiniProject_Batch_Rename
             get
             {
                 var args = Args as GUIDArgs;
-                var oldname = args.OldName;
+               // var oldname = args.OldName;
 
-                var result = $"GUID: {oldname}";
+                var result = "GUID";
                 return result;
             }
         }
@@ -37,7 +37,7 @@ namespace MiniProject_Batch_Rename
         public string Process(string origin)
         {
             var args = Args as GUIDArgs;
-            var name = args.OldName;
+            var name = origin.Substring(0, origin.LastIndexOf('.'));
 
             Guid newName = Guid.NewGuid();
             var Result = origin.Replace(name, newName.ToString());

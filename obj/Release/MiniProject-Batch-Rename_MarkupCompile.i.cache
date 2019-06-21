@@ -10,11 +10,11 @@ none
 false
 TRACE
 C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\App.xaml
-2-1155597338
+4-355424613
 
-20-1578122361
+23-1060661634
 15-14843582
-MainWindow.xaml;UpdateReplaceArgsDialog.xaml;
+MainWindow.xaml;UpdateMoveArgsDialog.xaml;UpdateNewCaseArgsDialog.xaml;UpdateReplaceArgsDialog.xaml;
 
-False
+True
 

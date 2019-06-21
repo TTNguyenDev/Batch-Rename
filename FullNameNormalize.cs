@@ -19,9 +19,9 @@ namespace MiniProject_Batch_Rename
             get
             {
                 var args = Args as FullNameNormalizeArgs;
-                var oldname = args.OldName;
+                
 
-                var result = $"Chuan hoa {oldname} ";
+                var result = $"FullNameNormalize";
                 return result;
             }
         }
@@ -62,7 +62,7 @@ namespace MiniProject_Batch_Rename
         public string Process(string origin)
         {
             var args = Args as FullNameNormalizeArgs;
-            var name = args.OldName;
+            var name = origin.Substring(0, origin.LastIndexOf('.')); ;
 
             var Result = origin.Replace(name, _FullNameNormalize(name));          
             return Result;

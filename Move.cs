@@ -11,9 +11,21 @@ namespace MiniProject_Batch_Rename
     {
         public IArgs Args { get; set; }
 
-        public string Description => throw new NotImplementedException();
+        public string Description
+        {
+            get
+            {
+                var arg = Args as MoveArgs;
+                return arg.amount.ToString();
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
+        void RaiseChangeEvent(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        }
 
         /// <summary>
         /// Move ISBN 
@@ -24,20 +36,30 @@ namespace MiniProject_Batch_Rename
         {
             var arg = Args as MoveArgs;
             //var iSBN = arg.ISBN;
-            int last = origin.LastIndexOf('.');
-            string newStringProcess = origin.Substring(0, last);
-            string endFile = origin.Substring(last);
-            string iSBN = newStringProcess.Substring(0, 13);
-            string fileName = newStringProcess.Substring(13);
+            origin = origin.Trim();
+            
+            string newStringProcess = origin.Substring(0, origin.LastIndexOf('.'));
+            string endFile = origin.Substring(origin.LastIndexOf('.'));
+            string iSBN = origin.Substring(0, arg.amount);
+            string fileName = newStringProcess.Substring(arg.amount);
             origin = origin.Replace(fileName, iSBN);
 
-            var result = fileName + " " + origin.Substring(13);
+            // var result = fileName + " " + origin.Substring(arg.amount).Trim();
+            var result = fileName.Trim()+" " + iSBN.Trim() + endFile.Trim();
             return result.Trim();
         }
 
         public void ShowUpdateArgDialog()
         {
-            return;
+            var screen = new UpdateMoveArgsDialog(Args as MoveArgs);
+
+            if (screen.ShowDialog() == true)
+            {
+                var args = Args as MoveArgs;
+
+                RaiseChangeEvent("Description");
+
+            }
         }
     }
 

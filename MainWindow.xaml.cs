@@ -34,12 +34,12 @@ namespace MiniProject_Batch_Rename
         System.Windows.Forms.FolderBrowserDialog data;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
-            
+
+
             _actions = new List<IAction>()
             {
                 new NewCase(){ Args = new NewCaseArg(){type = 2 }},
-                new Move(){ Args = new MoveArgs(){ }},
+                 new Move(){ Args = new MoveArgs(){ amount = 13 }},
                 new Replacer(){ Args = new ReplaceArgs(){OldFile = "abc", NewFile="def" }},
                 new FullNameNormalize(){ Args = new FullNameNormalizeArgs(){}},
                 new GUIDName(){ Args = new GUIDArgs(){ }},
@@ -55,7 +55,7 @@ namespace MiniProject_Batch_Rename
         //files
         private void addSysFileDialog(object sender, RoutedEventArgs e)
         {
-           
+            _files.Clear();
             data = new System.Windows.Forms.FolderBrowserDialog();
 
             if (data.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -83,30 +83,10 @@ namespace MiniProject_Batch_Rename
             {
                 _folders.Add(new Folders { Name = getNameBySplitPath(folder), Path = folder });
             }
-            
+
             folderListView.ItemsSource = _folders;
         }
-        private void RenameFolders()
-        {
-            Folders a = new Folders();
-            a.replace(_folders[0].Name, " ssha hAi Yen ", _folders[0].Path);
-        }
-        private void FullNameNormalizeFolder()
-        {
-            Folders a = new Folders();
-            foreach (var folder in _folders)
-            {
-                a.fullnamenormalize(folder.Name, folder.Path);
-            }
-        }
-        private void GuidNameFolders()
-        {
-            Folders a = new Folders();
-            foreach (var folder in _folders)
-            {
-                a.guidname(folder.Name, folder.Path);
-            }
-        }
+    
 
 
         private void refreshListView()
@@ -127,38 +107,48 @@ namespace MiniProject_Batch_Rename
             action.ShowUpdateArgDialog();
         }
 
-        
+
 
 
 
         private void startBatch(object sender, RoutedEventArgs e)
         {
-            if (fileListView.Items.Count == 0)
+            // if (fileListView.Items.Count == 0)
+            // {
+            //     MessageBox.Show("ListView is Empty");
+            //    return;
+            // } 
+
+            //foreach (var file in _files)
+            // {
+            //     var result = file.Path;
+
+            //     foreach (var act in _actions)
+            //    {
+            //         result = result.Replace(file.Name, act.Process(file.Name));
+            //         file.Name = getNameBySplitPath(result);
+            //     }
+            //     File.Move(file.Path, result);
+            // }
+            foreach (var folder in _folders)
             {
-                MessageBox.Show("ListView is Empty");
-                return;
+
+
+                //        result = result.Replace(folder.Name, act.Process(folder.Name));
+                //        folder.Name = getNameBySplitPath(result);
+                //    }
+                //    string a = "a";
+                //     Directory.Move(folder.Path, a);
+                //    Directory.Move(a, folder.Path.Replace(folder.Name,_actions[0].Process(folder.Name)));
+                folder.replace(folder.Name, "yen1", folder.Path);
+                //}
             }
 
-            Files fileInstance = new Files();
-            Folders folderInstance = new Folders();
-            // if ()
-           
-           
-                foreach (var file in _files)
-                {
-                    fileInstance.move(file.Path, file.Path.Replace(file.Name,_actions[0].Process(file.Name)));
-                }
+                MessageBox.Show("THANH CONG");
+                refreshListView();
 
-            refreshListView();
-            foreach (var file in _files)
-            {
-                fileInstance.move(file.Path, file.Path.Replace(file.Name, _actions[2].Process(file.Name)));
-            }
-
-            MessageBox.Show("THANH CONG");
+            
 
         }
-
-      
     }
 }

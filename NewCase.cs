@@ -19,7 +19,7 @@ namespace MiniProject_Batch_Rename
             get
             {
                 var arg = Args as NewCaseArg;
-                var result = $"Newcase with type {arg.type}";
+                var result = $"New Case";
                 return result;
             }
         }

@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace MiniProject_Batch_Rename
 {
-    class MoveArgs : IArgs
+    public class MoveArgs : IArgs
     {
-       
+        /// <summary>
+        /// số lượng chữ cái cần duy chuyển
+        /// </summary>
+       public int amount { get; set; }
 
     }
 }

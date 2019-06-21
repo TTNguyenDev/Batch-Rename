@@ -71,6 +71,9 @@
     <Compile Include="FullNameNormalizeArgs.cs" />
     <Compile Include="ReplaceArgs.cs" />
     <Compile Include="Replacer.cs" />
+    <Compile Include="UpdateMoveArgsDialog.xaml.cs">
+      <DependentUpon>UpdateMoveArgsDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateNewCaseArgsDialog.xaml.cs">
       <DependentUpon>UpdateNewCaseArgsDialog.xaml</DependentUpon>
     </Compile>
@@ -93,6 +96,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UpdateMoveArgsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UpdateNewCaseArgsDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

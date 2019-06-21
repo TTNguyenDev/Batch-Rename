@@ -17,3 +17,5 @@ C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\ob
 C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\UpdateReplaceArgsDialog.baml
 C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\UpdateNewCaseArgsDialog.g.cs
 C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\UpdateNewCaseArgsDialog.baml
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\UpdateMoveArgsDialog.g.cs
+C:\Users\vieta\source\repos\MiniProject-Batch-Rename\MiniProject-Batch-Rename\obj\Release\UpdateMoveArgsDialog.baml
