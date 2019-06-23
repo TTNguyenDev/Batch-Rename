@@ -34,12 +34,15 @@ namespace MiniProject_Batch_Rename
         System.Windows.Forms.FolderBrowserDialog data;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Preset a = new Preset();
+            MessageBox.Show(a.savePreset("ALOLO"));
 
-
+            //a.savePreset("testthuthoi");
+           
             _actions = new List<IAction>()
             {
                 new NewCase(){ Args = new NewCaseArg(){type = 2 }},
-                 new Move(){ Args = new MoveArgs(){ amount = 13 }},
+                new Move(){ Args = new MoveArgs(){ amount = 13 }},
                 new Replacer(){ Args = new ReplaceArgs(){OldFile = "abc", NewFile="def" }},
                 new FullNameNormalize(){ Args = new FullNameNormalizeArgs(){}},
                 new GUIDName(){ Args = new GUIDArgs(){ }},

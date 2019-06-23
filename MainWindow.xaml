@@ -113,9 +113,10 @@
                           
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <CheckBox Margin="7"  />
+                                    <CheckBox Margin="7"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
+                            
                         </GridViewColumn >
 
                     </GridView>

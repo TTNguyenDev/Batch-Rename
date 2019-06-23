@@ -69,3 +69,5 @@ D:\17CLC3\HK6\WINDOWS\--Batch-Rename\obj\Debug\MiniProject-Batch-Rename.csproj.G
 D:\17CLC3\HK6\WINDOWS\--Batch-Rename\obj\Debug\MiniProject-Batch-Rename.csproj.CoreCompileInputs.cache
 D:\17CLC3\HK6\WINDOWS\--Batch-Rename\obj\Debug\MiniProject-Batch-Rename.exe
 D:\17CLC3\HK6\WINDOWS\--Batch-Rename\obj\Debug\MiniProject-Batch-Rename.pdb
+\\Mac\Home\Desktop\Batch-Rename(C#)\obj\Debug\UpdateMoveArgsDialog.g.cs
+\\Mac\Home\Desktop\Batch-Rename(C#)\obj\Debug\UpdateMoveArgsDialog.baml

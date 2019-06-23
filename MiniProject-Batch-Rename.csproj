@@ -61,6 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Preset.cs" />
     <Compile Include="GUIDName.cs" />
     <Compile Include="GUIDArgs.cs" />
     <Compile Include="Move.cs" />
@@ -162,6 +163,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Custom-Icon-Design-Pretty-Office-7-Save.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="test.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
