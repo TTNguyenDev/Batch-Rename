@@ -24,6 +24,11 @@ namespace MiniProject_Batch_Rename
             }
         }
 
+        public override string ToString()
+        {
+            return "newCase";
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         void RaiseChangeEvent(string propertyName)
         {

@@ -11,6 +11,11 @@ namespace MiniProject_Batch_Rename
     {
         public IArgs Args { get; set; }
 
+        public override string ToString()
+        {
+            return "move";
+        }
+
         public string Description
         {
             get

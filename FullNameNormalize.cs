@@ -26,6 +26,11 @@ namespace MiniProject_Batch_Rename
             }
         }
 
+        public override string ToString()
+        {
+            return "fullnameNormalize";
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         void RaiseChangeEvent(string propertyName)

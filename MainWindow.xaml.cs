@@ -35,8 +35,11 @@ namespace MiniProject_Batch_Rename
         System.Windows.Forms.FolderBrowserDialog data;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Preset a = new Preset();
+            MessageBox.Show(a.savePreset("ALOLO"));
 
-
+            //a.savePreset("testthuthoi");
+           
             _actions = new List<IAction>()
             {
                 //new NewCase(){ Args = new NewCaseArg(){type = 1 }},
