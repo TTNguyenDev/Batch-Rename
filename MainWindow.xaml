@@ -190,16 +190,16 @@
                 </ListViewItem>-->
             </ListView>
             <ListView DockPanel.Dock="Left" Padding=" 0 20 0 0"  >
-                <CheckBox />
-                <CheckBox />
-                <CheckBox />
-                <CheckBox />
-                <CheckBox />
+                <CheckBox Name="newCaseCheckBox"/>
+                <CheckBox Name="moveCheckBox"/>
+                <CheckBox Name="replaceCheckBox"/>
+                <CheckBox Name="fullnameNormalizeCheckBox"/>
+                <CheckBox Name="guidCheckBox"/>
             </ListView>
 
             <StackPanel DockPanel.Dock="Right" >
                 <TabControl Height="302">
-                    <TabItem>
+                    <TabItem Name="tabFileItems">
                         <TabItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Rename Files" Margin="5"/>
@@ -228,7 +228,7 @@
                         </StackPanel>
                     </TabItem>
 
-                    <TabItem>
+                    <TabItem Name="tabFolderItems">
                         <TabItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Rename Forders" Margin="5"/>

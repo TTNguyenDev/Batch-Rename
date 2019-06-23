@@ -36,17 +36,17 @@ namespace MiniProject_Batch_Rename
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Preset a = new Preset();
-            MessageBox.Show(a.savePreset("ALOLO"));
+            a.savePreset("ALO");
 
             //a.savePreset("testthuthoi");
            
             _actions = new List<IAction>()
             {
-                //new NewCase(){ Args = new NewCaseArg(){type = 1 }},
+                new NewCase(){ Args = new NewCaseArg(){type = 1 }},
                 new Move(){ Args = new MoveArgs(){ amount = 13 }},
-               // new Replacer(){ Args = new ReplaceArgs(){OldFile = "abc", NewFile="def" }},
-              //  new FullNameNormalize(){ Args = new FullNameNormalizeArgs(){}},
-               //new GUIDName(){ Args = new GUIDArgs(){ }},
+                new Replacer(){ Args = new ReplaceArgs(){OldFile = "abc", NewFile="def" }},
+                new FullNameNormalize(){ Args = new FullNameNormalizeArgs(){}},
+                new GUIDName(){ Args = new GUIDArgs(){ }},
             };
             actionListView.ItemsSource = _actions;
            
@@ -125,59 +125,51 @@ namespace MiniProject_Batch_Rename
             action.ShowUpdateArgDialog();
         }
 
-
-
-
-
         private void startBatch(object sender, RoutedEventArgs e)
         {
-            // if (fileListView.Items.Count == 0)
-            // {
-            //     MessageBox.Show("ListView is Empty");
-            //    return;
-            // }
-
-            // } 
-
-            foreach (var file in _files)
+            if (tabFileItems.IsSelected)
             {
-                 var result = file.Path;
+                if (fileListView.Items.Count == 0)
+                {
+                    MessageBox.Show("listview is empty");
+                    return;
+                }
 
-                
-               
-                 foreach (var act in _actions)
-                 {
-                    
+                foreach (var file in _files)
+                {
+                    var result = file.Path;
+
+                    foreach (var act in _actions)
+                    {
+
                         result = result.Replace(file.Name, act.Process(file.Name));
                         file.Name = getNameBySplitPath(result);
-                    
-                 }
-                File.Move(file.Path, result);
 
-            }
-            foreach (var folder in _folders)
-            {
-
-                var result = folder.Path;
-                foreach (var act in _actions)
-                {
-
-                    result = result.Replace(folder.Name, act.Process(folder.Name));
-                    folder.Name = getNameBySplitPath(result);
+                    }
+                    File.Move(file.Path, result);
 
                 }
-                string a = "aaa";
-                Directory.Move(folder.Path, a);
-                Directory.Move(a, result);
             }
+            else if (tabFolderItems.IsSelected)
+            {
 
-            MessageBox.Show("THANH CONG");
-            
+                foreach (var folder in _folders)
+                {
+
+                    var result = folder.Path;
+                    foreach (var act in _actions)
+                    {
+
+                        result = result.Replace(folder.Name, act.Process(folder.Name));
+                        folder.Name = getNameBySplitPath(result);
+
+                    }
+                    string a = "aaa";
+                    Directory.Move(folder.Path, a);
+                    Directory.Move(a, result);
+                }
+            }
             refreshListView();
-            
-
-            
-
         }
     }
 }
