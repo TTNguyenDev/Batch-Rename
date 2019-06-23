@@ -39,12 +39,13 @@ namespace MiniProject_Batch_Rename
             _actions = new List<IAction>()
             {
                 new NewCase(){ Args = new NewCaseArg(){type = 2 }},
-                 new Move(){ Args = new MoveArgs(){ amount = 13 }},
-                new Replacer(){ Args = new ReplaceArgs(){OldFile = "abc", NewFile="def" }},
+                new Move(){ Args = new MoveArgs(){ amount = 13 }},
+                new Replacer(){ Args = new ReplaceArgs(){OldFile = "old name", NewFile="new name" }},
                 new FullNameNormalize(){ Args = new FullNameNormalizeArgs(){}},
                 new GUIDName(){ Args = new GUIDArgs(){ }},
             };
             actionListView.ItemsSource = _actions;
+           
         }
         private string getNameBySplitPath(string path)
         {
@@ -86,7 +87,7 @@ namespace MiniProject_Batch_Rename
 
             folderListView.ItemsSource = _folders;
         }
-    
+
 
 
         private void refreshListView()
@@ -108,47 +109,55 @@ namespace MiniProject_Batch_Rename
         }
 
 
+        
 
 
-
-        private void startBatch(object sender, RoutedEventArgs e)
+    private void startBatch(object sender, RoutedEventArgs e)
         {
-            // if (fileListView.Items.Count == 0)
+            //if (fileListView.Items.Count == 0)
             // {
             //     MessageBox.Show("ListView is Empty");
             //    return;
-            // } 
+            // }
 
             //foreach (var file in _files)
-            // {
-            //     var result = file.Path;
+            //{
+            //    var result = file.Path;
 
-            //     foreach (var act in _actions)
+            //    foreach (var act in _actions)
             //    {
-            //         result = result.Replace(file.Name, act.Process(file.Name));
-            //         file.Name = getNameBySplitPath(result);
-            //     }
-            //     File.Move(file.Path, result);
-            // }
+            //        result = result.Replace(file.Name, act.Process(file.Name));
+            //        file.Name = getNameBySplitPath(result);
+            //    }
+            //    File.Move(file.Path, result);
+            //}
             foreach (var folder in _folders)
             {
 
+                var result = folder.Path;
+                foreach (var act in _actions)
+                {
 
-                //        result = result.Replace(folder.Name, act.Process(folder.Name));
-                //        folder.Name = getNameBySplitPath(result);
-                //    }
-                //    string a = "a";
-                //     Directory.Move(folder.Path, a);
-                //    Directory.Move(a, folder.Path.Replace(folder.Name,_actions[0].Process(folder.Name)));
-                folder.replace(folder.Name, "yen1", folder.Path);
-                //}
+                    result = result.Replace(folder.Name, act.Process(folder.Name));
+                    folder.Name = getNameBySplitPath(result);
+
+                }
+                string a = "aaa";
+                Directory.Move(folder.Path, a);
+                Directory.Move(a, result);
             }
 
-                MessageBox.Show("THANH CONG");
-                refreshListView();
 
-            
+            //}
+
+
+
+
+
+            //MessageBox.Show(actionListView.Items.Count.ToString());
+            //refreshListView();
 
         }
+
     }
 }
