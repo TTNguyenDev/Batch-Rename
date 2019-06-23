@@ -28,9 +28,10 @@ namespace MiniProject_Batch_Rename
         }
 
         BindingList<Files> _files = new BindingList<Files>();
-        BindingList<Folders> _folders = new BindingList<Folders>();
+        BindingList <Folders> _folders = new BindingList<Folders>();
         List<IAction> _actions;
         string[] filesSub;
+        string[] foldersSub;
         System.Windows.Forms.FolderBrowserDialog data;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -38,11 +39,11 @@ namespace MiniProject_Batch_Rename
 
             _actions = new List<IAction>()
             {
-                new NewCase(){ Args = new NewCaseArg(){type = 2 }},
-                 new Move(){ Args = new MoveArgs(){ amount = 13 }},
-                new Replacer(){ Args = new ReplaceArgs(){OldFile = "abc", NewFile="def" }},
-                new FullNameNormalize(){ Args = new FullNameNormalizeArgs(){}},
-                new GUIDName(){ Args = new GUIDArgs(){ }},
+                //new NewCase(){ Args = new NewCaseArg(){type = 1 }},
+                new Move(){ Args = new MoveArgs(){ amount = 13 }},
+               // new Replacer(){ Args = new ReplaceArgs(){OldFile = "abc", NewFile="def" }},
+              //  new FullNameNormalize(){ Args = new FullNameNormalizeArgs(){}},
+               //new GUIDName(){ Args = new GUIDArgs(){ }},
             };
             actionListView.ItemsSource = _actions;
         }
@@ -60,6 +61,7 @@ namespace MiniProject_Batch_Rename
 
             if (data.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                
                 filesSub = Directory.GetFiles(data.SelectedPath);
 
                 foreach (var file in filesSub)
@@ -71,26 +73,28 @@ namespace MiniProject_Batch_Rename
             }
         }
 
-        //folder
         private void addSysFolderDialog(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.FolderBrowserDialog data = new System.Windows.Forms.FolderBrowserDialog();
-            data.ShowDialog();
+            _folders.Clear();
+            data = new System.Windows.Forms.FolderBrowserDialog();
 
-            string[] foldersSub = Directory.GetDirectories(data.SelectedPath);
-
-            foreach (var folder in foldersSub)
+            if (data.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                _folders.Add(new Folders { Name = getNameBySplitPath(folder), Path = folder });
+
+                foldersSub = Directory.GetDirectories(data.SelectedPath);
+
+                foreach (var folder in foldersSub)
+                {
+                    _folders.Add(new Folders { Name = getNameBySplitPath(folder), Path = folder });
+                }
+
+                folderListView.ItemsSource = _folders;
             }
-
-            folderListView.ItemsSource = _folders;
         }
-    
-
 
         private void refreshListView()
         {
+            //refresh File
             _files.Clear();
 
             filesSub = Directory.GetFiles(data.SelectedPath);
@@ -98,6 +102,16 @@ namespace MiniProject_Batch_Rename
             foreach (var file in filesSub)
             {
                 _files.Add(new Files { Name = getNameBySplitPath(file), Path = file });
+            }
+            
+            //refresh Folder
+            _folders.Clear();
+
+            foldersSub = Directory.GetDirectories(data.SelectedPath);
+
+            foreach (var folder in foldersSub)
+            {
+                _folders.Add(new Folders { Name = getNameBySplitPath(folder), Path = folder });
             }
         }
 
@@ -119,33 +133,42 @@ namespace MiniProject_Batch_Rename
             //    return;
             // } 
 
-            //foreach (var file in _files)
-            // {
-            //     var result = file.Path;
+            foreach (var file in _files)
+            {
+                 var result = file.Path;
 
-            //     foreach (var act in _actions)
-            //    {
-            //         result = result.Replace(file.Name, act.Process(file.Name));
-            //         file.Name = getNameBySplitPath(result);
-            //     }
-            //     File.Move(file.Path, result);
-            // }
+                
+               
+                 foreach (var act in _actions)
+                 {
+                    
+                        result = result.Replace(file.Name, act.Process(file.Name));
+                        file.Name = getNameBySplitPath(result);
+                    
+                 }
+                File.Move(file.Path, result);
+
+            }
             foreach (var folder in _folders)
             {
 
+                var result = folder.Path;
+                foreach (var act in _actions)
+                {
 
-                //        result = result.Replace(folder.Name, act.Process(folder.Name));
-                //        folder.Name = getNameBySplitPath(result);
-                //    }
-                //    string a = "a";
-                //     Directory.Move(folder.Path, a);
-                //    Directory.Move(a, folder.Path.Replace(folder.Name,_actions[0].Process(folder.Name)));
-                folder.replace(folder.Name, "yen1", folder.Path);
-                //}
+                    result = result.Replace(folder.Name, act.Process(folder.Name));
+                    folder.Name = getNameBySplitPath(result);
+
+                }
+                string a = "aaa";
+                Directory.Move(folder.Path, a);
+                Directory.Move(a, result);
             }
 
-                MessageBox.Show("THANH CONG");
-                refreshListView();
+            MessageBox.Show("THANH CONG");
+            
+            refreshListView();
+            
 
             
 
