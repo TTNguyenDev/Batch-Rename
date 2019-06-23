@@ -110,11 +110,15 @@
                         </GridViewColumn>
                         <GridViewColumn Header="Action" Width="150" DisplayMemberBinding="{Binding Description}" />
                         <GridViewColumn>
-                          
+                            <CheckBox Name="cbSelectAll" Content=" Select All" />
                             <GridViewColumn.CellTemplate>
+
                                 <DataTemplate>
-                                    <CheckBox Margin="7"  />
+                                    <StackPanel Orientation="Horizontal">
+                                       
+                                    </StackPanel>
                                 </DataTemplate>
+
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn >
 
@@ -184,6 +188,14 @@
                     </StackPanel>
                 </ListViewItem>-->
             </ListView>
+            <ListView DockPanel.Dock="Left" Padding=" 0 20 0 0"  >
+                <CheckBox />
+                <CheckBox />
+                <CheckBox />
+                <CheckBox />
+                <CheckBox />
+            </ListView>
+
             <StackPanel DockPanel.Dock="Right" >
                 <TabControl Height="302">
                     <TabItem>
@@ -200,7 +212,7 @@
                                         <TextBlock Text="Add" Margin="5"/>
                                     </StackPanel>
                                 </Button>
-                                
+
                             </ToolBar>
                             <ListView  Name="fileListView" Height="315">
                                 <ListView.View>
@@ -237,7 +249,7 @@
                                     <GridView>
                                         <GridViewColumn Header="Folder Name" Width= "100"  DisplayMemberBinding="{Binding Name}"/>
                                         <GridViewColumn Header="New folderName" Width="100"  DisplayMemberBinding="{Binding Name}"/>
-                                            <GridViewColumn Header="Path" Width="100"  DisplayMemberBinding="{Binding Name}"/>
+                                        <GridViewColumn Header="Path" Width="100"  DisplayMemberBinding="{Binding Name}"/>
                                         <GridViewColumn Header="Eror" Width="100"  DisplayMemberBinding="{Binding Name}"/>
                                     </GridView>
                                 </ListView.View>

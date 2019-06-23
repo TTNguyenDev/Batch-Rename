@@ -23,13 +23,10 @@ namespace MiniProject_Batch_Rename
         {
             // _action = new NewCase() { Args = new NewCaseArg() { type = 1} };
             // File.Move(path, path.Replace(origin, _action.Process(origin)));
-          
-            string a = "a";
             var result = path;
+
             result = result.Replace(origin, _action.Process(origin));
-            Directory.Move(path, a);
-            Directory.Move(a, result);
-           
+            File.Move(path, result);
 
         }
         public void replace(string originName, string newName, string path)

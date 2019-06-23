@@ -46,6 +46,7 @@ namespace MiniProject_Batch_Rename
                //new GUIDName(){ Args = new GUIDArgs(){ }},
             };
             actionListView.ItemsSource = _actions;
+           
         }
         private string getNameBySplitPath(string path)
         {
@@ -131,6 +132,8 @@ namespace MiniProject_Batch_Rename
             // {
             //     MessageBox.Show("ListView is Empty");
             //    return;
+            // }
+
             // } 
 
             foreach (var file in _files)
