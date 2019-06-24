@@ -14,7 +14,7 @@ namespace MiniProject_Batch_Rename
     public class Replacer : IAction, INotifyPropertyChanged
     {
         public IArgs Args { get; set; }
-
+      
         public string Description
         {
             get
@@ -23,8 +23,19 @@ namespace MiniProject_Batch_Rename
                 var oldfile = args.OldFile;
                 var newfile = args.NewFile;
 
-                var result = $"Thay thế {oldfile} bằng {newfile}";
+                var result = $"Replace {oldfile} to {newfile}";
                 return result;
+            }
+        }
+
+        private bool check;
+        public bool Check
+        {
+            get => check;
+            set
+            {
+                check = value;
+                RaiseChangeEvent("Check");
             }
         }
 

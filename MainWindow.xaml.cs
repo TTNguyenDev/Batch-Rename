@@ -39,13 +39,14 @@ namespace MiniProject_Batch_Rename
 
             _actions = new List<IAction>()
             {
-                //new NewCase(){ Args = new NewCaseArg(){type = 1 }},
-                new Move(){ Args = new MoveArgs(){ amount = 13 }},
-               // new Replacer(){ Args = new ReplaceArgs(){OldFile = "abc", NewFile="def" }},
-              //  new FullNameNormalize(){ Args = new FullNameNormalizeArgs(){}},
-               //new GUIDName(){ Args = new GUIDArgs(){ }},
+                new NewCase(){ Args = new NewCaseArg(){type = 1 }, Check = false },
+                new Move(){ Args = new MoveArgs(){ amount = 1 }, Check = false },
+                new Replacer(){ Args = new ReplaceArgs(){OldFile = "Old Name", NewFile="New Name" }, Check = false},
+                new FullNameNormalize(){ Args = new FullNameNormalizeArgs(){}, Check = false},
+               new GUIDName(){ Args = new GUIDArgs(){ }, Check = false},
             };
             actionListView.ItemsSource = _actions;
+            DataContext = this;
         }
         private string getNameBySplitPath(string path)
         {
@@ -141,9 +142,11 @@ namespace MiniProject_Batch_Rename
                
                  foreach (var act in _actions)
                  {
-                    
+                    if (act.Check == true)
+                    {
                         result = result.Replace(file.Name, act.Process(file.Name));
                         file.Name = getNameBySplitPath(result);
+                    }
                     
                  }
                 File.Move(file.Path, result);
@@ -155,9 +158,11 @@ namespace MiniProject_Batch_Rename
                 var result = folder.Path;
                 foreach (var act in _actions)
                 {
-
-                    result = result.Replace(folder.Name, act.Process(folder.Name));
-                    folder.Name = getNameBySplitPath(result);
+                    if (act.Check == true)
+                    {
+                        result = result.Replace(folder.Name, act.Process(folder.Name));
+                        folder.Name = getNameBySplitPath(result);
+                    }
 
                 }
                 string a = "aaa";

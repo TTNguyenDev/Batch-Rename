@@ -21,11 +21,20 @@ namespace MiniProject_Batch_Rename
                 var args = Args as FullNameNormalizeArgs;
                 
 
-                var result = $"FullNameNormalize";
+                var result = $"Fullname normalize";
                 return result;
             }
         }
-
+        private bool check;
+        public bool Check
+        {
+            get => check;
+            set
+            {
+                check = value;
+                RaiseChangeEvent("Check");
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
 
         void RaiseChangeEvent(string propertyName)
