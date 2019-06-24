@@ -30,14 +30,16 @@ namespace MiniProject_Batch_Rename
         BindingList<Files> _files = new BindingList<Files>();
         BindingList <Folders> _folders = new BindingList<Folders>();
         List<IAction> _actions;
+        List<Preset> arrayPresets = new List<Preset>();
         string[] filesSub;
         string[] foldersSub;
-        System.Windows.Forms.FolderBrowserDialog data;
+        System.Windows.Forms.FolderBrowserDialog fileData;
+        System.Windows.Forms.FolderBrowserDialog folderData;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Preset a = new Preset();
-            a.savePreset("ALO");
+            loadPresets();
 
+   
             //a.savePreset("testthuthoi");
            
             _actions = new List<IAction>()
@@ -57,16 +59,39 @@ namespace MiniProject_Batch_Rename
             return result.Last();
         }
 
+        private void loadPresets()
+        {
+            presetComboBox.Items.Clear();
+            arrayPresets.Clear();
+
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+            string[] presetPaths = Directory.GetFiles(path, "*.txt");
+            Preset a = new Preset();
+
+            foreach (var presetPath in presetPaths)
+            {
+                arrayPresets.Add(a.loadPreset(presetPath));
+            }
+
+            foreach (var preset in arrayPresets)
+            {
+                presetComboBox.Items.Add(preset.presetName);
+            }
+        }
+
+
+
+    
         //files
         private void addSysFileDialog(object sender, RoutedEventArgs e)
         {
             _files.Clear();
-            data = new System.Windows.Forms.FolderBrowserDialog();
+            fileData = new System.Windows.Forms.FolderBrowserDialog();
 
-            if (data.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (fileData.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 
-                filesSub = Directory.GetFiles(data.SelectedPath);
+                filesSub = Directory.GetFiles(fileData.SelectedPath);
 
                 foreach (var file in filesSub)
                 {
@@ -80,12 +105,12 @@ namespace MiniProject_Batch_Rename
         private void addSysFolderDialog(object sender, RoutedEventArgs e)
         {
             _folders.Clear();
-            data = new System.Windows.Forms.FolderBrowserDialog();
+            folderData = new System.Windows.Forms.FolderBrowserDialog();
 
-            if (data.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (folderData.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
 
-                foldersSub = Directory.GetDirectories(data.SelectedPath);
+                foldersSub = Directory.GetDirectories(folderData.SelectedPath);
 
                 foreach (var folder in foldersSub)
                 {
@@ -96,22 +121,25 @@ namespace MiniProject_Batch_Rename
             }
         }
 
-        private void refreshListView()
+        private void refreshFileListView()
         {
             //refresh File
             _files.Clear();
 
-            filesSub = Directory.GetFiles(data.SelectedPath);
+            filesSub = Directory.GetFiles(fileData.SelectedPath);
 
             foreach (var file in filesSub)
             {
                 _files.Add(new Files { Name = getNameBySplitPath(file), Path = file });
             }
-            
+        }
+
+        private void refreshFolderListView()
+        {
             //refresh Folder
             _folders.Clear();
 
-            foldersSub = Directory.GetDirectories(data.SelectedPath);
+            foldersSub = Directory.GetDirectories(folderData.SelectedPath);
 
             foreach (var folder in foldersSub)
             {
@@ -125,13 +153,48 @@ namespace MiniProject_Batch_Rename
             action.ShowUpdateArgDialog();
         }
 
+        private List<IAction> getCheckBoxValue()
+        {
+            List<IAction> listActions = new List<IAction>();
+       
+            if ((bool)newCaseCheckBox.IsChecked)
+            {
+                listActions.Add(_actions[0]);
+            }
+
+            if ((bool)moveCheckBox.IsChecked)
+            {
+                listActions.Add(_actions[1]);
+            }
+
+            if ((bool)replaceCheckBox.IsChecked)
+            {
+                listActions.Add(_actions[2]);
+            }
+
+            if ((bool)fullnameNormalizeCheckBox.IsChecked)
+            {
+                listActions.Add(_actions[3]);
+            }
+
+            if ((bool)guidCheckBox.IsChecked)
+            {
+                listActions.Add(_actions[4]);
+            }
+
+            return listActions;
+        }
+
         private void startBatch(object sender, RoutedEventArgs e)
         {
+            //checkBox
+            List<IAction> listActions = getCheckBoxValue();
+                
             if (tabFileItems.IsSelected)
             {
                 if (fileListView.Items.Count == 0)
                 {
-                    MessageBox.Show("listview is empty");
+                    MessageBox.Show("Listview is empty");
                     return;
                 }
 
@@ -139,7 +202,7 @@ namespace MiniProject_Batch_Rename
                 {
                     var result = file.Path;
 
-                    foreach (var act in _actions)
+                    foreach (var act in listActions)
                     {
 
                         result = result.Replace(file.Name, act.Process(file.Name));
@@ -149,15 +212,21 @@ namespace MiniProject_Batch_Rename
                     File.Move(file.Path, result);
 
                 }
+                refreshFileListView();
             }
             else if (tabFolderItems.IsSelected)
             {
+                if (folderListView.Items.Count == 0)
+                {
+                    MessageBox.Show("Listview is empty");
+                    return;
+                }
 
                 foreach (var folder in _folders)
                 {
 
                     var result = folder.Path;
-                    foreach (var act in _actions)
+                    foreach (var act in listActions)
                     {
 
                         result = result.Replace(folder.Name, act.Process(folder.Name));
@@ -168,8 +237,47 @@ namespace MiniProject_Batch_Rename
                     Directory.Move(folder.Path, a);
                     Directory.Move(a, result);
                 }
+                refreshFolderListView();
             }
-            refreshListView();
+        }
+
+        private void savePresetButtonClick(object sender, RoutedEventArgs e)
+        {
+            var textBoxContent = presetNameTextBox.Text;
+            if (textBoxContent.Length == 0)
+                MessageBox.Show("Enter Preset name");
+            else
+            {
+                List<IAction> listActions = getCheckBoxValue();
+
+                Preset preset = new Preset();
+                string presetName = textBoxContent;
+                preset.savePreset(presetName, listActions);
+                MessageBox.Show($"Preset {presetName} saved");
+
+                loadPresets();
+            }
+        }
+
+        //optional:
+        private void ComboBoxSectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            //show discription of this preset
+            //var a = presetComboBox.SelectedIndex;
+            //MessageBox.Show(a.ToString());
+        }
+
+        private void comboBoxDidDropDownClosed(object sender, EventArgs e)
+        {
+            //actionListView.Items.Clear();
+            var index = presetComboBox.SelectedIndex;
+            _actions.Clear();
+            _actions = arrayPresets[index].actions;
+            MessageBox.Show("alo");
+            actionListView.ItemsSource = _actions;
+
+
         }
     }
 }

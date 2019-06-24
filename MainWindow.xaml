@@ -8,8 +8,6 @@
         Title="My Rename" Height="450" Width="800" Loaded="Window_Loaded" >
     <Grid>
 
-
-
         <DockPanel LastChildFill="True" >
 
             <ToolBar DockPanel.Dock="Top">
@@ -81,19 +79,16 @@
             </ToolBar>
 
             <ToolBar DockPanel.Dock="Top">
-
+                <Label Content="Preset name: "/>
+                <TextBox Name="presetNameTextBox" Width="100"/>
                 <!--Button Refresh-->
-                <Button>
+                <Button Click="savePresetButtonClick">
                     <Image Source="/Images/Custom-Icon-Design-Pretty-Office-7-Save.ico" Width="15" RenderOptions.BitmapScalingMode="HighQuality"/>
                 </Button>
                 <StackPanel Orientation="Horizontal" >
 
                     <TextBlock Margin="5" Text="Presets: " />
-                    <ComboBox Width="100">
-
-                        <ComboBoxItem Content="" />
-                        <ComboBoxItem Content="" />
-                    </ComboBox>
+                    <ComboBox Width="100" Name="presetComboBox" SelectionChanged="ComboBoxSectionChanged" DropDownClosed="comboBoxDidDropDownClosed"/>
                 </StackPanel>
             </ToolBar>
 

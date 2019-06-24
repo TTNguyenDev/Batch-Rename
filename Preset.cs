@@ -10,12 +10,26 @@ namespace MiniProject_Batch_Rename
 {
     public class Preset
     {
-
-        List<IAction> _actions = new List<IAction>();
         string _presetName;
-        public string loadPreset()
+        List<IAction> _actions = new List<IAction>();
+
+        public string presetName { get => _presetName; set => _presetName = value; }
+        public List<IAction> actions { get => _actions; set => _actions = value; }
+
+        public Preset(string presetName, List<IAction> actions)
         {
-            string[] lines = File.ReadAllLines(@"test.txt");
+            _presetName = presetName;
+            _actions = actions;
+        }
+
+        public Preset()
+        {
+            
+        }
+
+        public Preset loadPreset(string path)
+        {
+            string[] lines = File.ReadAllLines(path);
             
             foreach (string line in lines)
             {
@@ -45,13 +59,15 @@ namespace MiniProject_Batch_Rename
                         break;
                 }
             }
-            return "";
+            return new Preset(_presetName, _actions);
         }
 
-        public void savePreset(string name)
+        public void savePreset(string name, List<IAction> actions)
         {
             _presetName = name;
-            using (StreamWriter writer = new StreamWriter(_presetName + ".txt"))
+            _actions = actions;
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+            using (StreamWriter writer = new StreamWriter(path + _presetName + ".txt"))
             {
                 writer.WriteLine(name);
 
