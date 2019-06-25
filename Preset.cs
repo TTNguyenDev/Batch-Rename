@@ -37,26 +37,28 @@ namespace MiniProject_Batch_Rename
                 {
                     _presetName = line;
                 }
-
-                string[] result = line.Split('~');
-                switch (result[0])
+                else
                 {
-                    case "replace":
-                        _actions.Add(new Replacer() { Args = new ReplaceArgs() { OldFile = result[1], NewFile = result[2] }});
-                        break;
-                    case "newCase":
-                        _actions.Add(new NewCase() { Args = new NewCaseArg() { type = int.Parse(result[1]) } });
-                        break;
-                    case "move":
-                        //default value is 13. config later
-                        _actions.Add(new Move() { Args = new MoveArgs() { amount = 13 } });
-                        break;
-                    case "fullnameNormalize":
-                        _actions.Add(new FullNameNormalize() { Args = new FullNameNormalizeArgs(){} });
-                        break;
-                    case "guid":
-                        _actions.Add(new GUIDName() { Args = new GUIDArgs() { } });
-                        break;
+                    string[] result = line.Split('~');
+                    switch (result[0])
+                    {
+                        case "replace":
+                            _actions.Add(new Replacer() { Args = new ReplaceArgs() { OldFile = result[1], NewFile = result[2] } });
+                            break;
+                        case "newCase":
+                            _actions.Add(new NewCase() { Args = new NewCaseArg() { type = int.Parse(result[1]) } });
+                            break;
+                        case "move":
+                            //default value is 13. config later
+                            _actions.Add(new Move() { Args = new MoveArgs() { amount = 13 } });
+                            break;
+                        case "fullnameNormalize":
+                            _actions.Add(new FullNameNormalize() { Args = new FullNameNormalizeArgs() { } });
+                            break;
+                        case "guid":
+                            _actions.Add(new GUIDName() { Args = new GUIDArgs() { } });
+                            break;
+                    }
                 }
             }
             return new Preset(_presetName, _actions);

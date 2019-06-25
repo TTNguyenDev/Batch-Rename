@@ -39,9 +39,9 @@ namespace MiniProject_Batch_Rename
         {
             loadPresets();
 
-   
+
             //a.savePreset("testthuthoi");
-           
+
             _actions = new List<IAction>()
             {
                 new NewCase(){ Args = new NewCaseArg(){type = 1 }},
@@ -66,10 +66,11 @@ namespace MiniProject_Batch_Rename
 
             var path = AppDomain.CurrentDomain.BaseDirectory;
             string[] presetPaths = Directory.GetFiles(path, "*.txt");
-            Preset a = new Preset();
+           
 
             foreach (var presetPath in presetPaths)
             {
+                Preset a = new Preset();
                 arrayPresets.Add(a.loadPreset(presetPath));
             }
 
@@ -272,12 +273,9 @@ namespace MiniProject_Batch_Rename
         {
             //actionListView.Items.Clear();
             var index = presetComboBox.SelectedIndex;
-            _actions.Clear();
+            //_actions.Clear();
             _actions = arrayPresets[index].actions;
-            MessageBox.Show("alo");
             actionListView.ItemsSource = _actions;
-
-
         }
     }
 }
