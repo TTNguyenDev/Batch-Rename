@@ -50,7 +50,7 @@ namespace MiniProject_Batch_Rename
                             break;
                         case "move":
                             //default value is 13. config later
-                            _actions.Add(new Move() { Args = new MoveArgs() { amount = 13 } });
+                            _actions.Add(new Move() { Args = new MoveArgs() { amount = int.Parse(result[1]) } });
                             break;
                         case "fullnameNormalize":
                             _actions.Add(new FullNameNormalize() { Args = new FullNameNormalizeArgs() { } });
@@ -93,6 +93,8 @@ namespace MiniProject_Batch_Rename
                         case "move":
                             var move = action as Move;
                             var moveArgs = move.Args as MoveArgs;
+                            MessageBox.Show($"{moveArgs.amount}");
+
                             writer.WriteLine($"move~{moveArgs.amount}");
                             break;
 

@@ -44,9 +44,9 @@ namespace MiniProject_Batch_Rename
 
             _actions = new List<IAction>()
             {
+                new Replacer(){ Args = new ReplaceArgs(){OldFile = "abc", NewFile="def" }},
                 new NewCase(){ Args = new NewCaseArg(){type = 1 }},
                 new Move(){ Args = new MoveArgs(){ amount = 13 }},
-                new Replacer(){ Args = new ReplaceArgs(){OldFile = "abc", NewFile="def" }},
                 new FullNameNormalize(){ Args = new FullNameNormalizeArgs(){}},
                 new GUIDName(){ Args = new GUIDArgs(){ }},
             };
@@ -271,9 +271,7 @@ namespace MiniProject_Batch_Rename
 
         private void comboBoxDidDropDownClosed(object sender, EventArgs e)
         {
-            //actionListView.Items.Clear();
             var index = presetComboBox.SelectedIndex;
-            //_actions.Clear();
             _actions = arrayPresets[index].actions;
             actionListView.ItemsSource = _actions;
         }
