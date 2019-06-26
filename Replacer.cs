@@ -28,8 +28,19 @@ namespace MiniProject_Batch_Rename
                 var oldfile = args.OldFile;
                 var newfile = args.NewFile;
 
-                var result = $"Thay thế {oldfile} bằng {newfile}";
+                var result = $"Replace {oldfile} to {newfile}";
                 return result;
+            }
+        }
+
+        private bool check;
+        public bool Check
+        {
+            get => check;
+            set
+            {
+                check = value;
+                RaiseChangeEvent("Check");
             }
         }
 

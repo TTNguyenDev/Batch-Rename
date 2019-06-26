@@ -10,10 +10,16 @@ namespace MiniProject_Batch_Rename
     class NewCase : IAction, INotifyPropertyChanged
     {
         public IArgs Args { get; set; }
-        /// <summary>
-        /// type: các option
-        /// </summary>
-        
+        private bool check;
+        public bool Check
+        {
+            get => check;
+            set
+            {
+                check = value;
+                RaiseChangeEvent("Check");
+            }
+        }
         public string Description
         {
             get
@@ -23,6 +29,7 @@ namespace MiniProject_Batch_Rename
                 return result;
             }
         }
+      
 
         public override string ToString()
         {

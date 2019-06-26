@@ -21,7 +21,18 @@ namespace MiniProject_Batch_Rename
             get
             {
                 var arg = Args as MoveArgs;
-                return arg.amount.ToString();
+                return $"Move";
+            }
+        }
+
+        private bool check;
+        public bool Check
+        {
+            get => check;
+            set
+            {
+                check = value;
+                RaiseChangeEvent("Check");
             }
         }
 

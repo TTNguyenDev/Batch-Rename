@@ -44,14 +44,14 @@ namespace MiniProject_Batch_Rename
 
             _actions = new List<IAction>()
             {
-                new NewCase(){ Args = new NewCaseArg(){type = 1 }},
-                new Move(){ Args = new MoveArgs(){ amount = 13 }},
-                new Replacer(){ Args = new ReplaceArgs(){OldFile = "abc", NewFile="def" }},
-                new FullNameNormalize(){ Args = new FullNameNormalizeArgs(){}},
-                new GUIDName(){ Args = new GUIDArgs(){ }},
+                new NewCase(){ Args = new NewCaseArg(){type = 1 }, Check = false },
+                new Move(){ Args = new MoveArgs(){ amount = 1 }, Check = false },
+                new Replacer(){ Args = new ReplaceArgs(){OldFile = "Old Name", NewFile="New Name" }, Check = false},
+                new FullNameNormalize(){ Args = new FullNameNormalizeArgs(){}, Check = false},
+               new GUIDName(){ Args = new GUIDArgs(){ }, Check = false},
             };
             actionListView.ItemsSource = _actions;
-           
+            DataContext = this;
         }
         private string getNameBySplitPath(string path)
         {

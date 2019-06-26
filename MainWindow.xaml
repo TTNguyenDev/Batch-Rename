@@ -88,7 +88,11 @@
                 <StackPanel Orientation="Horizontal" >
 
                     <TextBlock Margin="5" Text="Presets: " />
-                    <ComboBox Width="100" Name="presetComboBox" SelectionChanged="ComboBoxSectionChanged" DropDownClosed="comboBoxDidDropDownClosed"/>
+                    <ComboBox Width="100">
+
+                        <ComboBoxItem Content="" />
+                        <ComboBoxItem Content="" />
+                    </ComboBox>
                 </StackPanel>
             </ToolBar>
 
@@ -109,9 +113,7 @@
                             <GridViewColumn.CellTemplate>
 
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                       
-                                    </StackPanel>
+                                    <CheckBox Margin="7" IsChecked="{Binding Check}"  />
                                 </DataTemplate>
 
                             </GridViewColumn.CellTemplate>

@@ -11,6 +11,7 @@ namespace MiniProject_Batch_Rename
     /// </summary>
     public interface IAction
     {
+        bool Check { get; set; }
         /// <summary>
         /// Đối số của việc xử lí
         /// </summary>
