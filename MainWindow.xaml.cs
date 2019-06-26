@@ -157,31 +157,13 @@ namespace MiniProject_Batch_Rename
         private List<IAction> getCheckBoxValue()
         {
             List<IAction> listActions = new List<IAction>();
-       
-            if ((bool)newCaseCheckBox.IsChecked)
+            
+            foreach(var act in _actions)
             {
-                listActions.Add(_actions[0]);
+                if (act.Check == true)
+                    listActions.Add(act);
             }
-
-            if ((bool)moveCheckBox.IsChecked)
-            {
-                listActions.Add(_actions[1]);
-            }
-
-            if ((bool)replaceCheckBox.IsChecked)
-            {
-                listActions.Add(_actions[2]);
-            }
-
-            if ((bool)fullnameNormalizeCheckBox.IsChecked)
-            {
-                listActions.Add(_actions[3]);
-            }
-
-            if ((bool)guidCheckBox.IsChecked)
-            {
-                listActions.Add(_actions[4]);
-            }
+        
 
             return listActions;
         }
