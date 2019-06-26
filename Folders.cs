@@ -17,7 +17,23 @@ namespace MiniProject_Batch_Rename
 
         public string Name { get => _name; set => _name = value; }
         public string Path { get => _path; set => _path = value; }
-        public string NewName { get => _newName; set => _newName = value; }
+
+        public string NewName
+        {
+            get => _newName;
+            set
+            {
+                _newName = value;
+                RaiseChangeEvent("NewName");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        void RaiseChangeEvent(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        }
 
         public void Process(string origin, string path, IAction _action)
         {
@@ -29,29 +45,6 @@ namespace MiniProject_Batch_Rename
             File.Move(path, result);
 
         }
-        public void replace(string originName, string newName, string path)
-        {
-            IAction replaceAction = new Replacer() { Args = new ReplaceArgs() { OldFile = originName, NewFile = newName } };
-            Directory.Move(path, replaceAction.Process(path));
-        }
-
-        //fullname normalize
-        public void fullnamenormalize(string originName, string path)
-        {
-            IAction fullnamenormalizeAction = new FullNameNormalize()
-            { Args = new FullNameNormalizeArgs() {  } };
-            string a = "aa";
-            Directory.Move(path, a);
-            Directory.Move(a,fullnamenormalizeAction.Process(path));
-           
-        }
-        public void guidname(string originName, string path)
-        {
-            IAction guidAction = new GUIDName()
-            { Args = new GUIDArgs() {  } };
-            Directory.Move(path, guidAction.Process(path));
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
+      
     }
 }

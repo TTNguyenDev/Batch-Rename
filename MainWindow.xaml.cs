@@ -157,31 +157,13 @@ namespace MiniProject_Batch_Rename
         private List<IAction> getCheckBoxValue()
         {
             List<IAction> listActions = new List<IAction>();
-       
-            if ((bool)newCaseCheckBox.IsChecked)
+            
+            foreach(var act in _actions)
             {
-                listActions.Add(_actions[0]);
+                if (act.Check == true)
+                    listActions.Add(act);
             }
-
-            if ((bool)moveCheckBox.IsChecked)
-            {
-                listActions.Add(_actions[1]);
-            }
-
-            if ((bool)replaceCheckBox.IsChecked)
-            {
-                listActions.Add(_actions[2]);
-            }
-
-            if ((bool)fullnameNormalizeCheckBox.IsChecked)
-            {
-                listActions.Add(_actions[3]);
-            }
-
-            if ((bool)guidCheckBox.IsChecked)
-            {
-                listActions.Add(_actions[4]);
-            }
+        
 
             return listActions;
         }
@@ -193,6 +175,7 @@ namespace MiniProject_Batch_Rename
                 
             if (tabFileItems.IsSelected)
             {
+                refreshFileListView();
                 if (fileListView.Items.Count == 0)
                 {
                     MessageBox.Show("Listview is empty");
@@ -205,18 +188,20 @@ namespace MiniProject_Batch_Rename
 
                     foreach (var act in listActions)
                     {
-
+                        
                         result = result.Replace(file.Name, act.Process(file.Name));
                         file.Name = getNameBySplitPath(result);
 
                     }
+                    file.NewName = getNameBySplitPath(result);
                     File.Move(file.Path, result);
 
                 }
-                refreshFileListView();
+                
             }
             else if (tabFolderItems.IsSelected)
             {
+                refreshFolderListView();
                 if (folderListView.Items.Count == 0)
                 {
                     MessageBox.Show("Listview is empty");
@@ -234,11 +219,12 @@ namespace MiniProject_Batch_Rename
                         folder.Name = getNameBySplitPath(result);
 
                     }
+                    folder.NewName = getNameBySplitPath(result);
                     string a = "aaa";
                     Directory.Move(folder.Path, a);
                     Directory.Move(a, result);
                 }
-                refreshFolderListView();
+                
             }
         }
 

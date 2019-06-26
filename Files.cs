@@ -17,9 +17,20 @@ namespace MiniProject_Batch_Rename
         //test kkkkkkk
         public string Name { get => _name; set => _name = value; }
         public string Path { get => _path; set => _path = value; }
-        public string NewName { get => _newName; set => _newName = value; }
+        public string NewName { get => _newName;
+            set
+            {
+                _newName = value;
+                RaiseChangeEvent("NewName");
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
+        void RaiseChangeEvent(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        }
 
         public void Process(  string origin,  string path, IAction _action)
         {

@@ -88,11 +88,8 @@
                 <StackPanel Orientation="Horizontal" >
 
                     <TextBlock Margin="5" Text="Presets: " />
-                    <ComboBox Width="100">
+                    <ComboBox Name="presetComboBox" Width="100" DropDownClosed="comboBoxDidDropDownClosed"/>
 
-                        <ComboBoxItem Content="" />
-                        <ComboBoxItem Content="" />
-                    </ComboBox>
                 </StackPanel>
             </ToolBar>
 
@@ -105,11 +102,10 @@
                 </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn  Width="40">
-                        </GridViewColumn>
+                        
                         <GridViewColumn Header="Action" Width="150" DisplayMemberBinding="{Binding Description}" />
                         <GridViewColumn>
-                            <CheckBox Name="cbSelectAll" Content=" Select All" />
+                           
                             <GridViewColumn.CellTemplate>
 
                                 <DataTemplate>
@@ -122,78 +118,9 @@
 
                     </GridView>
                 </ListView.View>
-                <!--<ListView.ItemTemplate>
-                    
-                    <DataTemplate>
-                        <CheckBox Name="newCaseCheckBox">
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
-                                <TextBlock Text="{Binding Description}" Margin="5"/>
-                            </StackPanel>
-                        </CheckBox>
-                    </DataTemplate>
-                </ListView.ItemTemplate>-->
-
-                <!--<ListViewItem Background="LightCoral" Foreground="Red" FontFamily="Verdana" FontSize="12" FontWeight="Bold" MouseDoubleClick="handleNewCaseAction">
-                    <CheckBox Name="newCaseCheckBox">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            <TextBlock Text="New Case" Margin="5"/>
-                        </StackPanel>
-                    </CheckBox>
-                </ListViewItem>
-                <ListViewItem Background="LightGray" Foreground="Black" FontFamily="Georgia" FontSize="14" FontWeight="Bold">
-                    <CheckBox Name="moveCheckBox">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            <TextBlock Text="Move" Margin="5"/>
-                        </StackPanel>
-                    </CheckBox>
-                </ListViewItem>
-                <ListViewItem Background="LightBlue" Foreground="Purple" FontFamily="Verdana" FontSize="12" FontWeight="Bold" MouseDoubleClick="handleReplaceAction">
-                    <CheckBox Name="replaceCheckBox">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            <TextBlock Margin="5" Text="Replace"/>
-                        </StackPanel>
-                    </CheckBox>
-                </ListViewItem>
-                <ListViewItem Background="LightGreen" Foreground="Green" FontFamily="Georgia" FontSize="14" FontWeight="Bold">
-                    <CheckBox Name="fullnameNormalizeCheckBox">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            <TextBlock Text="Fullname normalize" Margin="5"/>
-                        </StackPanel>
-                    </CheckBox>
-                </ListViewItem>
-                <ListViewItem Background="LightSlateGray" Foreground="Orange" FontFamily="Georgia" FontSize="14" FontWeight="Bold">
-                    <CheckBox Name="uniqueNameCheckBox">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/Button-Add-icon.png" Height="15" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            <TextBlock Margin="5"><Span FontSize="14.6666666666667" FontFamily="Segoe UI"><Run Text="Unique name"/></Span></TextBlock>
-                        </StackPanel>
-                    </CheckBox>
-                </ListViewItem>
-                <ListViewItem>
-                    <StackPanel>
-                        <TextBox Width="150"  />
-                        <StackPanel Orientation="Horizontal" Margin="5">
-                            <TextBlock Text="Apply to:" Margin="5" />
-                            <ComboBox>
-                                <ComboBoxItem IsSelected="True" Content="Name"/>
-                            </ComboBox>
-                        </StackPanel>
-                    </StackPanel>
-                </ListViewItem>-->
+               
             </ListView>
-            <ListView DockPanel.Dock="Left" Padding=" 0 20 0 0"  >
-                <CheckBox Name="newCaseCheckBox"/>
-                <CheckBox Name="moveCheckBox"/>
-                <CheckBox Name="replaceCheckBox"/>
-                <CheckBox Name="fullnameNormalizeCheckBox"/>
-                <CheckBox Name="guidCheckBox"/>
-            </ListView>
-
+           
             <StackPanel DockPanel.Dock="Right" >
                 <TabControl Height="302">
                     <TabItem Name="tabFileItems">
@@ -216,8 +143,8 @@
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="File Name"  Width= "100"  DisplayMemberBinding="{Binding Name}"/>
-                                        <GridViewColumn Header="New FileName" Width="100" DisplayMemberBinding="{Binding Path}"/>
-                                        <GridViewColumn Header="Path" Width="100" />
+                                        <GridViewColumn Header="New FileName" Width="100" DisplayMemberBinding="{Binding NewName}"/>
+                                        <GridViewColumn Header="Path" Width="100" DisplayMemberBinding="{Binding Path}" />
                                         <GridViewColumn Header="Eror" Width="100" />
                                     </GridView>
                                 </ListView.View>
@@ -246,9 +173,9 @@
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="Folder Name" Width= "100"  DisplayMemberBinding="{Binding Name}"/>
-                                        <GridViewColumn Header="New folderName" Width="100"  DisplayMemberBinding="{Binding Name}"/>
-                                        <GridViewColumn Header="Path" Width="100"  DisplayMemberBinding="{Binding Name}"/>
-                                        <GridViewColumn Header="Eror" Width="100"  DisplayMemberBinding="{Binding Name}"/>
+                                        <GridViewColumn Header="New folderName" Width="100"  DisplayMemberBinding="{Binding NewName}"/>
+                                        <GridViewColumn Header="Path" Width="100"  DisplayMemberBinding="{Binding Path}"/>
+                                        <GridViewColumn Header="Eror" Width="100"  />
                                     </GridView>
                                 </ListView.View>
                             </ListView>
