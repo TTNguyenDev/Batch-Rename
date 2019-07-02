@@ -40,9 +40,11 @@ namespace MiniProject_Batch_Rename
             // _action = new NewCase() { Args = new NewCaseArg() { type = 1} };
             // File.Move(path, path.Replace(origin, _action.Process(origin)));
             var result = path;
+            string a = "aaa";
 
             result = result.Replace(origin, _action.Process(origin));
-            File.Move(path, result);
+            Directory.Move(path, a);
+            Directory.Move(a, result);
 
         }
       

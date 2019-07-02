@@ -52,6 +52,7 @@ namespace MiniProject_Batch_Rename
             };
             actionListView.ItemsSource = _actions;
             DataContext = this;
+      
         }
         private string getNameBySplitPath(string path)
         {
@@ -152,19 +153,18 @@ namespace MiniProject_Batch_Rename
         {
             var action = actionListView.SelectedItem as IAction;
             action.ShowUpdateArgDialog();
+            
         }
 
         private List<IAction> getCheckBoxValue()
         {
             List<IAction> listActions = new List<IAction>();
-            
-            foreach(var act in _actions)
+
+            foreach (var act in _actions)
             {
                 if (act.Check == true)
                     listActions.Add(act);
             }
-        
-
             return listActions;
         }
 
@@ -193,7 +193,7 @@ namespace MiniProject_Batch_Rename
                         file.Name = getNameBySplitPath(result);
 
                     }
-                    file.NewName = getNameBySplitPath(result);
+                    
                     File.Move(file.Path, result);
 
                 }
@@ -204,14 +204,15 @@ namespace MiniProject_Batch_Rename
                 refreshFolderListView();
                 if (folderListView.Items.Count == 0)
                 {
-                    MessageBox.Show("Listview is empty");
+                    MessageBox.Show("List folderview is empty");
                     return;
                 }
-
+               
                 foreach (var folder in _folders)
                 {
 
                     var result = folder.Path;
+                    
                     foreach (var act in listActions)
                     {
 
@@ -219,7 +220,8 @@ namespace MiniProject_Batch_Rename
                         folder.Name = getNameBySplitPath(result);
 
                     }
-                    folder.NewName = getNameBySplitPath(result);
+                    
+
                     string a = "aaa";
                     Directory.Move(folder.Path, a);
                     Directory.Move(a, result);
@@ -261,6 +263,120 @@ namespace MiniProject_Batch_Rename
 
             _actions = arrayPresets[index].actions;
             actionListView.ItemsSource = _actions;
+        }
+
+
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (tabFileItems.IsSelected)
+            {
+                refreshFileListView();
+                if (fileListView.Items.Count == 0)
+                {
+                    MessageBox.Show("Listview is empty");
+                    return;
+                }
+
+                foreach (var file in _files)
+                {
+                    var result = file.Path;
+
+                    foreach (var act in _actions)
+                    {
+                        if (act.Check == true)
+                        {
+                            result = result.Replace(file.Name, act.Process(file.Name));
+                            file.Name = getNameBySplitPath(result);
+                        }
+                    }
+                    file.NewName = getNameBySplitPath(result);
+                }
+
+            }
+            else if (tabFolderItems.IsSelected)
+            {
+                refreshFolderListView();
+                if (folderListView.Items.Count == 0)
+                {
+                    MessageBox.Show("List folderview is empty");
+                    return;
+                }
+
+                foreach (var folder in _folders)
+                {
+
+                    var result = folder.Path;
+
+                    foreach (var act in _actions)
+                    {
+                        if (act.Check == true)
+                        {
+                            result = result.Replace(folder.Name, act.Process(folder.Name));
+                            folder.Name = getNameBySplitPath(result);
+                        }
+                    }
+
+                    folder.NewName = getNameBySplitPath(result);                   
+                }
+
+            }
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (tabFileItems.IsSelected)
+            {
+                refreshFileListView();
+                if (fileListView.Items.Count == 0)
+                {
+                    MessageBox.Show("Listview is empty");
+                    return;
+                }
+
+                foreach (var file in _files)
+                {
+                    var result = file.Path;
+
+                    foreach (var act in _actions)
+                    {
+                        if (act.Check == true)
+                        {
+                            result = result.Replace(file.Name, act.Process(file.Name));
+                            file.Name = getNameBySplitPath(result);
+                        }
+                    }
+                    file.NewName = getNameBySplitPath(result);
+                }
+
+            }
+            else if (tabFolderItems.IsSelected)
+            {
+                refreshFolderListView();
+                if (folderListView.Items.Count == 0)
+                {
+                    MessageBox.Show("List folderview is empty");
+                    return;
+                }
+
+                foreach (var folder in _folders)
+                {
+
+                    var result = folder.Path;
+
+                    foreach (var act in _actions)
+                    {
+                        if (act.Check == true)
+                        {
+                            result = result.Replace(folder.Name, act.Process(folder.Name));
+                            folder.Name = getNameBySplitPath(result);
+                        }
+                    }
+
+                    folder.NewName = getNameBySplitPath(result);
+                }
+
+            }
         }
     }
 }
