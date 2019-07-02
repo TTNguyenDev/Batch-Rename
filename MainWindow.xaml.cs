@@ -212,7 +212,7 @@ namespace MiniProject_Batch_Rename
                 {
 
                     var result = folder.Path;
-                    
+                   
                     foreach (var act in listActions)
                     {
 
@@ -281,7 +281,7 @@ namespace MiniProject_Batch_Rename
                 foreach (var file in _files)
                 {
                     var result = file.Path;
-
+                    var oldname = file.Name;
                     foreach (var act in _actions)
                     {
                         if (act.Check == true)
@@ -291,6 +291,7 @@ namespace MiniProject_Batch_Rename
                         }
                     }
                     file.NewName = getNameBySplitPath(result);
+                    file.Name = oldname;
                 }
 
             }
@@ -307,7 +308,7 @@ namespace MiniProject_Batch_Rename
                 {
 
                     var result = folder.Path;
-
+                    var oldname = folder.Name;
                     foreach (var act in _actions)
                     {
                         if (act.Check == true)
@@ -316,7 +317,7 @@ namespace MiniProject_Batch_Rename
                             folder.Name = getNameBySplitPath(result);
                         }
                     }
-
+                    folder.Name = oldname;
                     folder.NewName = getNameBySplitPath(result);                   
                 }
 
@@ -337,7 +338,7 @@ namespace MiniProject_Batch_Rename
                 foreach (var file in _files)
                 {
                     var result = file.Path;
-
+                    var oldname = file.Name;
                     foreach (var act in _actions)
                     {
                         if (act.Check == true)
@@ -347,6 +348,7 @@ namespace MiniProject_Batch_Rename
                         }
                     }
                     file.NewName = getNameBySplitPath(result);
+                    file.Name = oldname;
                 }
 
             }
@@ -363,7 +365,7 @@ namespace MiniProject_Batch_Rename
                 {
 
                     var result = folder.Path;
-
+                    var oldname = folder.Name;
                     foreach (var act in _actions)
                     {
                         if (act.Check == true)
@@ -372,7 +374,7 @@ namespace MiniProject_Batch_Rename
                             folder.Name = getNameBySplitPath(result);
                         }
                     }
-
+                    folder.Name = oldname;
                     folder.NewName = getNameBySplitPath(result);
                 }
 
