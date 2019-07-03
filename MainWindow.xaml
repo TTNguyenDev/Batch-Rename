@@ -42,17 +42,8 @@
             </ToolBar>
 
             <ToolBar DockPanel.Dock="Top">
-
-                <ComboBox >
-                    <ComboBoxItem IsSelected="True">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/Oxygen-Icons.org-Oxygen-Actions-list-add-user.ico" Width="15" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            <TextBlock Text="Add Method" Margin="5"/>
-                        </StackPanel>
-                    </ComboBoxItem>
-                    <ComboBoxItem Content="" />
-                    <ComboBoxItem Content="" />
-                </ComboBox>
+                <RadioButton Name="Subffix" Content="Subffix" GroupName="duplicateHandling"/>
+                <RadioButton Name="Ignore" Content="Ignore Duplicate" GroupName="duplicateHandling"/>
                 <!--Button Clear-->
                 <Button>
                     <StackPanel Orientation="Horizontal">
@@ -146,7 +137,6 @@
                                         <GridViewColumn Header="File Name"  Width= "100"  DisplayMemberBinding="{Binding Name}"/>
                                         <GridViewColumn Header="New FileName" Width="100" DisplayMemberBinding="{Binding NewName}"/>
                                         <GridViewColumn Header="Path" Width="100" DisplayMemberBinding="{Binding Path}" />
-                                        <GridViewColumn Header="Eror" Width="100" />
                                     </GridView>
                                 </ListView.View>
                             </ListView>
@@ -176,7 +166,6 @@
                                         <GridViewColumn Header="Folder Name" Width= "100"  DisplayMemberBinding="{Binding Name}"/>
                                         <GridViewColumn Header="New folderName" Width="100"  DisplayMemberBinding="{Binding NewName}"/>
                                         <GridViewColumn Header="Path" Width="100"  DisplayMemberBinding="{Binding Path}"/>
-                                        <GridViewColumn Header="Eror" Width="100"  />
                                     </GridView>
                                 </ListView.View>
                             </ListView>

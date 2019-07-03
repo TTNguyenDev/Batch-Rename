@@ -33,15 +33,13 @@ namespace MiniProject_Batch_Rename
         List<Preset> arrayPresets = new List<Preset>();
         string[] filesSub;
         string[] foldersSub;
+
         System.Windows.Forms.FolderBrowserDialog fileData;
         System.Windows.Forms.FolderBrowserDialog folderData;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             loadPresets();
-
-
-            //a.savePreset("testthuthoi");
-
+           
             _actions = new List<IAction>()
             {
                 new NewCase(){ Args = new NewCaseArg(){type = 1 }, Check = false },
@@ -67,8 +65,7 @@ namespace MiniProject_Batch_Rename
 
             var path = AppDomain.CurrentDomain.BaseDirectory;
             string[] presetPaths = Directory.GetFiles(path, "*.txt");
-           
-
+          
             foreach (var presetPath in presetPaths)
             {
                 Preset a = new Preset();
@@ -81,9 +78,6 @@ namespace MiniProject_Batch_Rename
             }
         }
 
-
-
-    
         //files
         private void addSysFileDialog(object sender, RoutedEventArgs e)
         {
@@ -175,40 +169,44 @@ namespace MiniProject_Batch_Rename
                 
             if (tabFileItems.IsSelected)
             {
-                //refreshFileListView();
+                var newFilesName = handleDuplicateFilesName();
+                refreshFileListView();
                 if (fileListView.Items.Count == 0)
                 {
                     MessageBox.Show("Listview is empty");
                     return;
                 }
 
-                foreach (var file in _files)
+                for (int i = 0; i < _files.Count; ++i)
                 {
-                                     
-                    File.Move(file.Path, file.Path.Replace(file.Name, file.NewName));
-                   
+                    _files[i].NewName = newFilesName[i];
                 }
-                //refreshFileListView();
+
+                foreach (var file in _files)
+                {               
+                    File.Move(file.Path, file.Path.Replace(file.Name, file.NewName));  
+                }
             }
             else if (tabFolderItems.IsSelected)
             {
-                
+                var newFoldersName = handleDuplicateFilesName();
+                refreshFolderListView();
                 if (folderListView.Items.Count == 0)
                 {
                     MessageBox.Show("List folderview is empty");
                     return;
                 }
-               
+
+                for (int i = 0; i < _files.Count; ++i)
+                {
+                    _folders[i].NewName = newFoldersName[i];
+                }
                 foreach (var folder in _folders)
                 {
-                  
-                    
                     string a = "aaa";
                     Directory.Move(folder.Path, a);
                     Directory.Move(a, folder.Path.Replace(folder.Name,folder.NewName));
                 }
-               // refreshFolderListView();
-
             }
         }
 
@@ -230,30 +228,99 @@ namespace MiniProject_Batch_Rename
             }
         }
 
-        //optional:
-        private void ComboBoxSectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-            //show discription of this preset
-            //var a = presetComboBox.SelectedIndex;
-            //MessageBox.Show(a.ToString());
-        }
-
         private void comboBoxDidDropDownClosed(object sender, EventArgs e)
         {
             var index = presetComboBox.SelectedIndex;
+
+            if (index == -1) return;
 
             _actions = arrayPresets[index].actions;
             actionListView.ItemsSource = _actions;
         }
 
+        private List<string> handleDuplicateFilesName()
+        {
+            int type;
+            if ((bool)Subffix.IsChecked)
+                type = 1;
+            else
+                type = 2;
+           
+            List<string> myList = new List<string>();
 
+            foreach (var file in _files)
+            {
+                myList.Add(file.NewName);
+            }
+
+            var counts = myList
+                .GroupBy(s => s)
+                .Where(p => p.Count() > 1)
+                .ToDictionary(p => p.Key, p => p.Count());
+
+            for (int i = myList.Count - 1; i >= 0; i--)
+            {
+                string s = myList[i];
+                if (counts.ContainsKey(s))
+                { 
+                    if (type == 1)
+                        myList[i] = $"({counts[s]--})" + myList[i];
+                    else if (type == 2)
+                        myList[i] = _files[i].Name;
+                }
+            }
+            
+            for (int i = 0; i < _files.Count; ++i)
+            {
+                _files[i].NewName = myList[i];
+            }
+
+            return myList;
+        }
+
+        private List<string> handleDuplicateFoldersName()
+        {
+            int type;
+            if ((bool)Subffix.IsChecked)
+                type = 1;
+            else
+                type = 2;
+
+            List<string> myList = new List<string>();
+
+            foreach (var folder in _folders)
+            {
+                myList.Add(folder.NewName);
+            }
+
+            var counts = myList
+                .GroupBy(s => s)
+                .Where(p => p.Count() > 1)
+                .ToDictionary(p => p.Key, p => p.Count());
+
+            for (int i = myList.Count - 1; i >= 0; i--)
+            {
+                string s = myList[i];
+                if (counts.ContainsKey(s))
+                {
+                    if (type == 1)
+                        myList[i] = $"({counts[s]--})" + myList[i];
+                    else if (type == 2)
+                        myList[i] = _files[i].Name;
+                }
+            }
+
+            for (int i = 0; i < _files.Count; ++i)
+            {
+                _folders[i].NewName = myList[i];
+            }
+            return myList;
+        }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             if (tabFileItems.IsSelected)
             {
-                refreshFileListView();
                 if (fileListView.Items.Count == 0)
                 {
                     MessageBox.Show("Listview is empty");
@@ -276,40 +343,10 @@ namespace MiniProject_Batch_Rename
                     file.Name = oldname;
                 }
                 //handle duplicate name
-
-
-                List<string> myList = new List<string>();
-
-                foreach (var file in _files)
-                {
-                    myList.Add(file.NewName);
-                }
-
-                var counts = myList
-                    .GroupBy(s => s)
-                    .Where(p => p.Count() > 1)
-                    .ToDictionary(p => p.Key, p => p.Count());
-
-     
-                for (int i = myList.Count - 1; i >= 0; i--)
-                {
-                    string s = myList[i];
-                    if (counts.ContainsKey(s))
-                    {
-                        //add the suffix and decrement the number of duplicates left to tag.
-                        myList[i] = $"({counts[s]--})" + myList[i];
-                    }
-                }
-
-                for (int i = 0; i < _files.Count; ++i)
-                {
-                    _files[i].NewName = myList[i];
-                    
-                }
+                handleDuplicateFilesName();
             }
             else if (tabFolderItems.IsSelected)
             {
-                refreshFolderListView();
                 if (folderListView.Items.Count == 0)
                 {
                     MessageBox.Show("List folderview is empty");
@@ -318,7 +355,6 @@ namespace MiniProject_Batch_Rename
 
                 foreach (var folder in _folders)
                 {
-
                     var result = folder.Path;
                     var oldname = folder.Name;
                     foreach (var act in _actions)
@@ -332,34 +368,7 @@ namespace MiniProject_Batch_Rename
                     folder.Name = oldname;
                     folder.NewName = getNameBySplitPath(result);                   
                 }
-                List<string> myList = new List<string>();
-
-                foreach (var folder in _folders)
-                {
-                    myList.Add(folder.NewName);
-                }
-
-                var counts = myList
-                    .GroupBy(s => s)
-                    .Where(p => p.Count() > 1)
-                    .ToDictionary(p => p.Key, p => p.Count());
-
-
-                for (int i = myList.Count - 1; i >= 0; i--)
-                {
-                    string s = myList[i];
-                    if (counts.ContainsKey(s))
-                    {
-                        //add the suffix and decrement the number of duplicates left to tag.
-                        myList[i] = $"({counts[s]--})" + myList[i];
-                    }
-                }
-
-                for (int i = 0; i < _files.Count; ++i)
-                {
-                    _folders[i].NewName = myList[i];
-
-                }
+                handleDuplicateFoldersName();
             }
         }
 
@@ -367,7 +376,7 @@ namespace MiniProject_Batch_Rename
         {
             if (tabFileItems.IsSelected)
             {
-                refreshFileListView();
+                //refreshFileListView();
                 if (fileListView.Items.Count == 0)
                 {
                     MessageBox.Show("Listview is empty");
@@ -402,7 +411,6 @@ namespace MiniProject_Batch_Rename
 
                 foreach (var folder in _folders)
                 {
-
                     var result = folder.Path;
                     var oldname = folder.Name;
                     foreach (var act in _actions)
@@ -416,7 +424,6 @@ namespace MiniProject_Batch_Rename
                     folder.Name = oldname;
                     folder.NewName = getNameBySplitPath(result);
                 }
-
             }
         }
     }
