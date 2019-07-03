@@ -184,6 +184,8 @@ namespace MiniProject_Batch_Rename
 
                 foreach (var file in _files)
                 {
+                    MessageBox.Show($"{_files[0].NewName}");
+
                     var result = file.Path;
 
                     foreach (var act in listActions)
@@ -293,7 +295,37 @@ namespace MiniProject_Batch_Rename
                     file.NewName = getNameBySplitPath(result);
                     file.Name = oldname;
                 }
+                //handle duplicate name
 
+
+                List<string> myList = new List<string>();
+
+                foreach (var file in _files)
+                {
+                    myList.Add(file.NewName);
+                }
+
+                var counts = myList
+                    .GroupBy(s => s)
+                    .Where(p => p.Count() > 1)
+                    .ToDictionary(p => p.Key, p => p.Count());
+
+     
+                for (int i = myList.Count - 1; i >= 0; i--)
+                {
+                    string s = myList[i];
+                    if (counts.ContainsKey(s))
+                    {
+                        //add the suffix and decrement the number of duplicates left to tag.
+                        myList[i] += $" ({counts[s]--})";
+                    }
+                }
+
+                for (int i = 0; i < _files.Count; ++i)
+                {
+                    _files[i].NewName = myList[i];
+                    MessageBox.Show($"kahsda {_files[i].NewName}");
+                }
             }
             else if (tabFolderItems.IsSelected)
             {
