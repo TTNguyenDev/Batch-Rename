@@ -175,7 +175,7 @@ namespace MiniProject_Batch_Rename
                 
             if (tabFileItems.IsSelected)
             {
-                refreshFileListView();
+                //refreshFileListView();
                 if (fileListView.Items.Count == 0)
                 {
                     MessageBox.Show("Listview is empty");
@@ -184,20 +184,20 @@ namespace MiniProject_Batch_Rename
 
                 foreach (var file in _files)
                 {
-                    MessageBox.Show($"{_files[0].NewName}");
+                    //MessageBox.Show($"{_files[0].NewName}");
 
-                    var result = file.Path;
+                    //var result = file.Path;
 
-                    foreach (var act in listActions)
-                    {
-                        
-                        result = result.Replace(file.Name, act.Process(file.Name));
-                        file.Name = getNameBySplitPath(result);
+                    //foreach (var act in listActions)
+                    //{
+                    //    file.NewName = act.Process(file.Name);
+                    //    result = result.Replace(file.Name, file.NewName);
+                    //    file.Name = getNameBySplitPath(result);
 
-                    }
+                    //}
                     
-                    File.Move(file.Path, result);
-
+                    File.Move(file.Path, file.Path.Replace(file.Name, file.NewName));
+                    //refreshFileListView();
                 }
                 
             }
@@ -217,7 +217,7 @@ namespace MiniProject_Batch_Rename
                    
                     foreach (var act in listActions)
                     {
-
+                        
                         result = result.Replace(folder.Name, act.Process(folder.Name));
                         folder.Name = getNameBySplitPath(result);
 
@@ -324,7 +324,7 @@ namespace MiniProject_Batch_Rename
                 for (int i = 0; i < _files.Count; ++i)
                 {
                     _files[i].NewName = myList[i];
-                    MessageBox.Show($"kahsda {_files[i].NewName}");
+                    
                 }
             }
             else if (tabFolderItems.IsSelected)
