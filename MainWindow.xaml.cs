@@ -184,26 +184,15 @@ namespace MiniProject_Batch_Rename
 
                 foreach (var file in _files)
                 {
-                    //MessageBox.Show($"{_files[0].NewName}");
-
-                    //var result = file.Path;
-
-                    //foreach (var act in listActions)
-                    //{
-                    //    file.NewName = act.Process(file.Name);
-                    //    result = result.Replace(file.Name, file.NewName);
-                    //    file.Name = getNameBySplitPath(result);
-
-                    //}
-                    
+                                     
                     File.Move(file.Path, file.Path.Replace(file.Name, file.NewName));
-                    //refreshFileListView();
+                   
                 }
-                
+                //refreshFileListView();
             }
             else if (tabFolderItems.IsSelected)
             {
-                refreshFolderListView();
+                
                 if (folderListView.Items.Count == 0)
                 {
                     MessageBox.Show("List folderview is empty");
@@ -212,23 +201,14 @@ namespace MiniProject_Batch_Rename
                
                 foreach (var folder in _folders)
                 {
-
-                    var result = folder.Path;
-                   
-                    foreach (var act in listActions)
-                    {
-                        
-                        result = result.Replace(folder.Name, act.Process(folder.Name));
-                        folder.Name = getNameBySplitPath(result);
-
-                    }
+                  
                     
-
                     string a = "aaa";
                     Directory.Move(folder.Path, a);
-                    Directory.Move(a, result);
+                    Directory.Move(a, folder.Path.Replace(folder.Name,folder.NewName));
                 }
-                
+               // refreshFolderListView();
+
             }
         }
 
@@ -317,7 +297,7 @@ namespace MiniProject_Batch_Rename
                     if (counts.ContainsKey(s))
                     {
                         //add the suffix and decrement the number of duplicates left to tag.
-                        myList[i] += $" ({counts[s]--})";
+                        myList[i] = $"({counts[s]--})" + myList[i];
                     }
                 }
 
@@ -352,7 +332,34 @@ namespace MiniProject_Batch_Rename
                     folder.Name = oldname;
                     folder.NewName = getNameBySplitPath(result);                   
                 }
+                List<string> myList = new List<string>();
 
+                foreach (var folder in _folders)
+                {
+                    myList.Add(folder.NewName);
+                }
+
+                var counts = myList
+                    .GroupBy(s => s)
+                    .Where(p => p.Count() > 1)
+                    .ToDictionary(p => p.Key, p => p.Count());
+
+
+                for (int i = myList.Count - 1; i >= 0; i--)
+                {
+                    string s = myList[i];
+                    if (counts.ContainsKey(s))
+                    {
+                        //add the suffix and decrement the number of duplicates left to tag.
+                        myList[i] = $"({counts[s]--})" + myList[i];
+                    }
+                }
+
+                for (int i = 0; i < _files.Count; ++i)
+                {
+                    _folders[i].NewName = myList[i];
+
+                }
             }
         }
 
