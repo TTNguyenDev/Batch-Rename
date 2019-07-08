@@ -64,21 +64,28 @@ namespace MiniProject_Batch_Rename
             
             if (i != 0)
             {
-                string newStringProcess = origin.Substring(0, origin.LastIndexOf('.'));
-                string endFile = origin.Substring(origin.LastIndexOf('.'));
-                string iSBN = origin.Substring(0, arg.amount);
-                string fileName = newStringProcess.Substring(arg.amount);
-                origin = origin.Replace(fileName, iSBN);
+                try
+                {
+                    string newStringProcess = origin.Substring(0, origin.LastIndexOf('.'));
+                    string endFile = origin.Substring(origin.LastIndexOf('.'));
+                    string iSBN = origin.Substring(0, arg.amount);
+                    string fileName = newStringProcess.Substring(arg.amount);
+                    origin = origin.Replace(fileName, iSBN);
 
-                // var result = fileName + " " + origin.Substring(arg.amount).Trim();
-                result = fileName.Trim() + " " + iSBN.Trim() + endFile.Trim();
+                    // var result = fileName + " " + origin.Substring(arg.amount).Trim();
+                    result = fileName.Trim() + " " + iSBN.Trim() + endFile.Trim();
+                }catch { }
+             
             }
             else
             {
-                string iSBN = origin.Substring(0, arg.amount);
-                string fileName = origin.Substring(arg.amount);
-                origin = origin.Replace(fileName, iSBN);
-                result = fileName.Trim() + " " + iSBN.Trim();
+                try
+                {
+                    string iSBN = origin.Substring(0, arg.amount);
+                    string fileName = origin.Substring(arg.amount);
+                    origin = origin.Replace(fileName, iSBN);
+                    result = fileName.Trim() + " " + iSBN.Trim();
+                }catch { }
             }
 
             /*string newStringProcess = origin.Substring(0, origin.LastIndexOf('.'));

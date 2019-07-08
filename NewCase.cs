@@ -52,25 +52,27 @@ namespace MiniProject_Batch_Rename
             var arg = Args as NewCaseArg;
             
             var result = "";
-            if (arg.type == 1)
-                result = origin.ToUpper();
-            else if (arg.type == 2)
-                result = origin.ToLower();
-            else if(arg.type == 3)
+            try
             {
-
-                origin = origin.Trim();
-                string[] SubName = origin.Split(' ');
-                for (int i = 0; i < SubName.Length; i++)
+                if (arg.type == 1)
+                    result = origin.ToUpper();
+                else if (arg.type == 2)
+                    result = origin.ToLower();
+                else if (arg.type == 3)
                 {
-                    var FirstChar = SubName[i].Substring(0, 1);
-                    var OtherChar = SubName[i].Substring(1);
-                    SubName[i] = FirstChar.ToUpper() + OtherChar.ToLower();
-                    result += SubName[i] + " ";
+
+                    origin = origin.Trim();
+                    string[] SubName = origin.Split(' ');
+                    for (int i = 0; i < SubName.Length; i++)
+                    {
+                        var FirstChar = SubName[i].Substring(0, 1);
+                        var OtherChar = SubName[i].Substring(1);
+                        SubName[i] = FirstChar.ToUpper() + OtherChar.ToLower();
+                        result += SubName[i] + " ";
+                    }
                 }
-             
-                
-            }
+            } catch { }
+            
             return result.Trim();
         }
 
