@@ -189,7 +189,7 @@ namespace MiniProject_Batch_Rename
             }
             else if (tabFolderItems.IsSelected)
             {
-                var newFoldersName = handleDuplicateFilesName();
+                var newFoldersName = handleDuplicateFoldersName();
                 refreshFolderListView();
                 if (folderListView.Items.Count == 0)
                 {
@@ -197,13 +197,13 @@ namespace MiniProject_Batch_Rename
                     return;
                 }
 
-                for (int i = 0; i < _files.Count; ++i)
+                for (int i = 0; i < _folders.Count; i++)
                 {
                     _folders[i].NewName = newFoldersName[i];
                 }
                 foreach (var folder in _folders)
                 {
-                    string a = "aaa";
+                    string a = "aa";
                     Directory.Move(folder.Path, a);
                     Directory.Move(a, folder.Path.Replace(folder.Name,folder.NewName));
                 }
