@@ -51,7 +51,7 @@ namespace MiniProject_Batch_Rename
         {
             var arg = Args as NewCaseArg;
             
-            var result = "";
+            var result = origin;
             try
             {
                 if (arg.type == 1)

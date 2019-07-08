@@ -60,7 +60,7 @@ namespace MiniProject_Batch_Rename
                     i++;
 
             }
-            var result = "";
+            var result = origin;
             
             if (i != 0)
             {
