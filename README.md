@@ -6,7 +6,7 @@ Nhom:
   1753113 - Nguyen Trong Triet
   1753128 - Le Quoc Viet
   1753139 - Truong Tran Hai Yen
-Link youtube demo:
+Link youtube demo: https://youtu.be/IYkg8roSHXk
 Cac chuc nang chinh:
 1. Add file vao list. 
 2. Add folder vao list.
