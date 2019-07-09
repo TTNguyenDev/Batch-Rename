@@ -60,7 +60,7 @@ namespace MiniProject_Batch_Rename
                     result = origin.ToLower();
                 else if (arg.type == 3)
                 {
-
+                    var temp = "";
                     origin = origin.Trim();
                     string[] SubName = origin.Split(' ');
                     for (int i = 0; i < SubName.Length; i++)
@@ -68,8 +68,9 @@ namespace MiniProject_Batch_Rename
                         var FirstChar = SubName[i].Substring(0, 1);
                         var OtherChar = SubName[i].Substring(1);
                         SubName[i] = FirstChar.ToUpper() + OtherChar.ToLower();
-                        result += SubName[i] + " ";
+                        temp += SubName[i] + " ";
                     }
+                    result = temp;
                 }
             } catch { }
             
